@@ -21,12 +21,12 @@ public class Server {
             String inputLine, outputLine;
 
             // Initiate conversation with client
-            Protocol kkp = new Protocol();
-            outputLine = kkp.processInput(null);
+            Http http = new Http();
+            outputLine = http.processInput(null);
             out.println(outputLine);
 
             while ((inputLine = in.readLine()) != null) {
-                outputLine = kkp.processInput(inputLine);
+                outputLine = http.processInput(inputLine);
                 out.println(outputLine);
                 if (outputLine.equals("Bye."))
                     break;
