@@ -14,7 +14,14 @@ Entre na pasta do projeto:
 ```
 cd Comp-Distribuida
 ```
-
+###Local
+```
+chmod +x build_*.sh
+```
+```
+./build_*.sh
+```
+###Docker
 Crie o container, utilizando:
 ```
 docker build -t comp-distribuida .
