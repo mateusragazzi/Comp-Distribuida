@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// TODO: implementar threads
 public class Http {
     public static final String URL = "url";
     public static final String METHOD = "method";
@@ -42,12 +43,13 @@ public class Http {
             case CONNECTED:
                 requestData = parseRequest(request);
 
-                handleRequest(requestData.get(URL));
+                String requestBody = makeRequestBody(requestData.get(URL));
 
-                response = "HTTP/1.1 200 Document follows \n" +
-                        "Server:  FACOM-CD-2020/1.0 \n" +
-                        "Content-Type: text/plain \n" +
-                        "Bye.";
+                response = "HTTP/1.1 200 Document follows \r\n" +
+                        "Server:  FACOM-CD-2020/1.0 \r\n" +
+                        "Content-Type: text/html \r\n\n" +
+                        requestBody +
+                        "\r\nBye.\r\n";
                 currentState = WAITING;
                 break;
         }
@@ -55,16 +57,37 @@ public class Http {
         return response;
     }
 
-    private void handleRequest(String url) {
+    private String makeRequestBody(String url) {
         url = SERVER_PATH + url;
         File myDir = new File(url);
-        if (myDir.isDirectory()) {
-            File[] contents = myDir.listFiles();
-            Arrays.stream(contents)
-                    .forEach(file ->
-                            System.out.println(file.getName() + ": " + file.length()));
+        if (myDir.exists()) {
+            if (myDir.isDirectory()) {
+                File[] contents = myDir.listFiles();
+                return listDirectoriesAsHtml(contents);
+            }
+            return myDir.getAbsolutePath();
         }
-        // else if is a file else 404
+        return null;
+    }
+
+    // TODO: Criar navegacao recursiva
+    private String listDirectoriesAsHtml(File[] contents) {
+        StringBuilder html = new StringBuilder();
+        html.append("<html>");
+        html.append("<body>");
+        html.append("<ul>");
+        Arrays.stream(contents)
+                .forEach(file -> {
+                    html.append("<li>");
+                    html.append("<a " + "href='" + file.getAbsolutePath() + "'>");
+                    html.append(file.getName() + "</a>");
+                    html.append("</li>");
+                });
+        html.append("</ul>");
+        html.append("</body>");
+        html.append("</html>");
+
+        return html.toString();
     }
 
     private Map<String, String> parseRequest(String request) {
