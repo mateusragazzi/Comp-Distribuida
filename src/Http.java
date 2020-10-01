@@ -10,9 +10,12 @@ public class Http {
     public static final String URL = "url";
     public static final String METHOD = "method";
     public static final String PROTOCOL_VERSION = "protocolVersion";
+    public static final String BASE_URL = "http://localhost:8080/";
+    private final String FILES_PATH = System.getProperty("user.dir");
+
     private final int WAITING = 0;
     private final int CONNECTED = 1;
-    private final String SERVER_PATH = System.getProperty("user.dir");
+    private static final int DISCONNECTED = 2;
 
     private int currentState = WAITING;
 
@@ -32,42 +35,49 @@ public class Http {
     <crlf>
     <Dados do Documento>
     */
+    int count = 0;
+
+    // TODO: nao trata mensagens continuas do cliente
     public String processInput(String request) {
         Map<String, String> requestData;
         String response = "";
-
-        switch (currentState) {
-            case WAITING:
-                currentState = CONNECTED;
-                break;
-            case CONNECTED:
-                requestData = parseRequest(request);
-
-                String requestBody = makeRequestBody(requestData.get(URL));
-
-                response = "HTTP/1.1 200 Document follows \r\n" +
-                        "Server:  FACOM-CD-2020/1.0 \r\n" +
-                        "Content-Type: text/html \r\n\n" +
-                        requestBody +
-                        "\r\nBye.\r\n";
-                currentState = WAITING;
-                break;
+        if (currentState == WAITING) {
+            currentState = CONNECTED;
+            response = makeResponse("");
+        } else if (currentState == CONNECTED) {
+            requestData = parseRequest(request);
+            String responseBody = makeResponseBody(requestData.get(URL));
+            response = makeResponse(responseBody);
+        } else {
+            currentState = DISCONNECTED;
         }
 
         return response;
     }
 
-    private String makeRequestBody(String url) {
-        url = SERVER_PATH + url;
-        File myDir = new File(url);
-        if (myDir.exists()) {
-            if (myDir.isDirectory()) {
-                File[] contents = myDir.listFiles();
-                return listDirectoriesAsHtml(contents);
-            }
-            return myDir.getAbsolutePath();
+    // TODO: melhorar formacao da resposta
+    private String makeResponse(String responseBody) {
+        String response;
+        response = "HTTP/1.1 200 Document follows \r\n" +
+                "Server:  FACOM-CD-2020/1.0 \r\n" +
+                "Content-Type: text/html \r\n\n" +
+                responseBody;
+        return response;
+    }
+
+    private String makeResponseBody(String url) {
+        url = FILES_PATH + url;
+        File requestedFile = new File(url);
+        return requestedFile.exists() ? processFile(requestedFile) : null;
+    }
+
+    //TODO: Criar forma para download de arquivo
+    private String processFile(File requestedFile) {
+        if (requestedFile.isDirectory()) {
+            File[] contents = requestedFile.listFiles();
+            return listDirectoriesAsHtml(contents);
         }
-        return null;
+        return requestedFile.getAbsolutePath();
     }
 
     // TODO: Criar navegacao recursiva
@@ -78,10 +88,9 @@ public class Http {
         html.append("<ul>");
         Arrays.stream(contents)
                 .forEach(file -> {
-                    html.append("<li>");
-                    html.append("<a " + "href='" + file.getAbsolutePath() + "'>");
-                    html.append(file.getName() + "</a>");
-                    html.append("</li>");
+                    html.append("<li>")
+                            .append(String.format("<a href='%s'>%s</a>", BASE_URL + file.getName(), file.getName()))
+                            .append("</li>");
                 });
         html.append("</ul>");
         html.append("</body>");
@@ -93,12 +102,11 @@ public class Http {
     private Map<String, String> parseRequest(String request) {
         Map<String, String> requestData = new HashMap<>();
 
-        String[] inputElements = request.split("%n");
+        String[] inputElements = request.split("\n");
         String[] requestFirstLine = inputElements[0].split(" ");
-
-        requestData.put(METHOD, requestFirstLine[0]);
-        requestData.put(URL, requestFirstLine[1]);
-        requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
+//        requestData.put(METHOD, requestFirstLine[0]);
+//        requestData.put(URL, requestFirstLine[1]);
+//        requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
 
         return requestData;
     }
