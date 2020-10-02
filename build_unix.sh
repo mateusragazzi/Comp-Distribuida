@@ -1,17 +1,19 @@
 #!/bin/sh
 
+PORT=8080
+
 compile() {
-  javac -d out -cp ".:src" src/Server.java;
+  javac -d out -cp ".:src" src/Server.java
 }
 
 run() {
-  echo "Running...";
-  java -cp "out" src.Server 8080;
+  echo "Running at http://localhost:$PORT"
+  java -cp "out" src.Server "$PORT"
 }
 
 execute() {
-  mkdir out;
-  compile && run;
+  mkdir out
+  compile && run
 }
 
-execute;
+execute
