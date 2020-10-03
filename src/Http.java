@@ -12,10 +12,10 @@ public class Http {
     public static final String PROTOCOL_VERSION = "protocolVersion";
     private final String FILES_PATH = System.getProperty("user.dir");
 
-    private String base_url = "http://localhost:";
+    private String baseUrl = "http://localhost:";
 
     public Http(int portNumber) {
-        this.base_url = base_url.concat(String.valueOf(portNumber)).concat("/");
+        this.baseUrl = baseUrl.concat(String.valueOf(portNumber)).concat("/");
     }
 
     /*
@@ -73,7 +73,6 @@ public class Http {
         return requestedFile.getAbsolutePath();
     }
 
-    // TODO: Criar navegacao recursiva
     private String listDirectoriesAsHtml(File[] contents) {
         StringBuilder html = new StringBuilder();
         html.append("<html>");
@@ -82,7 +81,7 @@ public class Http {
         Arrays.stream(contents)
                 .forEach(file -> {
                     html.append("<li>")
-                            .append(String.format("<a href='%s'>%s</a>", base_url + file.getName(), file.getName()))
+                            .append(String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName()))
                             .append("</li>");
                 });
         html.append("</ul>");
