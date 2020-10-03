@@ -19,17 +19,17 @@ public class Server {
                         new InputStreamReader(clientSocket.getInputStream()));
         ) {
             String inputLine, outputLine;
+            StringBuilder request = new StringBuilder();
 
-            // Initiate conversation with client
             Http http = new Http(portNumber);
-            outputLine = http.processInput(null);
-            out.println(outputLine);
 
             while ((inputLine = in.readLine()) != null) {
-                outputLine = http.processInput(inputLine);
-                out.println(outputLine);
-                if (outputLine.equals("Bye."))
+                request.append(inputLine).append("\r\n");
+                if (inputLine.isEmpty()) {
+                    outputLine = http.processInput(request.toString());
+                    out.println(outputLine);
                     break;
+                }
             }
         } catch (Exception e) {
             throw e;

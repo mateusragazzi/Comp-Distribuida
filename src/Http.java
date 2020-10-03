@@ -12,11 +12,6 @@ public class Http {
     public static final String PROTOCOL_VERSION = "protocolVersion";
     private final String FILES_PATH = System.getProperty("user.dir");
 
-    private final int WAITING = 0;
-    private final int CONNECTED = 1;
-    private static final int DISCONNECTED = 2;
-
-    private int currentState = WAITING;
     private String base_url = "http://localhost:";
 
     public Http(int portNumber) {
@@ -39,22 +34,15 @@ public class Http {
     <crlf>
     <Dados do Documento>
     */
-    int count = 0;
 
     // TODO: nao trata mensagens continuas do cliente
     public String processInput(String request) {
         Map<String, String> requestData;
         String response = "";
-        if (currentState == WAITING) {
-            currentState = CONNECTED;
-            response = makeResponse("");
-        } else if (currentState == CONNECTED) {
-            requestData = parseRequest(request);
-            String responseBody = makeResponseBody(requestData.get(URL));
-            response = makeResponse(responseBody);
-        } else {
-            currentState = DISCONNECTED;
-        }
+
+        requestData = parseRequest(request);
+        String responseBody = makeResponseBody(requestData.get(URL));
+        response = makeResponse(responseBody);
 
         return response;
     }
@@ -81,6 +69,7 @@ public class Http {
             File[] contents = requestedFile.listFiles();
             return listDirectoriesAsHtml(contents);
         }
+
         return requestedFile.getAbsolutePath();
     }
 
@@ -108,9 +97,12 @@ public class Http {
 
         String[] inputElements = request.split("\n");
         String[] requestFirstLine = inputElements[0].split(" ");
-        requestData.put(METHOD, requestFirstLine[0]);
-        requestData.put(URL, requestFirstLine[1]);
-        requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
+
+        if (requestFirstLine[0].equalsIgnoreCase("GET")) {
+            requestData.put(METHOD, requestFirstLine[0]);
+            requestData.put(URL, requestFirstLine[1]);
+            requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
+        }
 
         return requestData;
     }
