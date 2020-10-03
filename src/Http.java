@@ -10,7 +10,6 @@ public class Http {
     public static final String URL = "url";
     public static final String METHOD = "method";
     public static final String PROTOCOL_VERSION = "protocolVersion";
-    public static final String BASE_URL = "http://localhost:8080/";
     private final String FILES_PATH = System.getProperty("user.dir");
 
     private final int WAITING = 0;
@@ -18,6 +17,11 @@ public class Http {
     private static final int DISCONNECTED = 2;
 
     private int currentState = WAITING;
+    private String base_url = "http://localhost:";
+
+    public Http(int portNumber) {
+        this.base_url = base_url.concat(String.valueOf(portNumber)).concat("/");
+    }
 
     /*
        Request
@@ -89,7 +93,7 @@ public class Http {
         Arrays.stream(contents)
                 .forEach(file -> {
                     html.append("<li>")
-                            .append(String.format("<a href='%s'>%s</a>", BASE_URL + file.getName(), file.getName()))
+                            .append(String.format("<a href='%s'>%s</a>", base_url + file.getName(), file.getName()))
                             .append("</li>");
                 });
         html.append("</ul>");
@@ -104,9 +108,9 @@ public class Http {
 
         String[] inputElements = request.split("\n");
         String[] requestFirstLine = inputElements[0].split(" ");
-//        requestData.put(METHOD, requestFirstLine[0]);
-//        requestData.put(URL, requestFirstLine[1]);
-//        requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
+        requestData.put(METHOD, requestFirstLine[0]);
+        requestData.put(URL, requestFirstLine[1]);
+        requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
 
         return requestData;
     }

@@ -21,7 +21,7 @@ public class Server {
             String inputLine, outputLine;
 
             // Initiate conversation with client
-            Http http = new Http();
+            Http http = new Http(portNumber);
             outputLine = http.processInput(null);
             out.println(outputLine);
 

@@ -1,6 +1,11 @@
 #!/bin/sh
 
-PORT=8080
+echo "Please, enter the server port. The default is 8080."
+read PORT
+
+if [ -z "$PORT" ]; then
+  PORT=8080
+fi
 
 compile() {
   javac -d out -cp ".;src" src/Server.java
@@ -12,6 +17,7 @@ run() {
 }
 
 execute() {
+  rm -rf out
   mkdir out
   compile && run
 }
