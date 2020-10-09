@@ -1,6 +1,10 @@
 #!/bin/sh
 
 compile() {
+  if [ -d out ]; then
+    rm -rf out
+  fi
+  mkdir out
   javac -d out -cp ".;src" src/Server.java
 }
 
@@ -17,8 +21,6 @@ execute() {
     PORT=8080
   fi
 
-  rm -rf out
-  mkdir out
   compile && run
 }
 
