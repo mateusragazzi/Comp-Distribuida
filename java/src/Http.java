@@ -1,6 +1,8 @@
 package src;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,12 +12,14 @@ public class Http {
     public static final String URL = "url";
     public static final String METHOD = "method";
     public static final String PROTOCOL_VERSION = "protocolVersion";
+    private static final String PROTOCOL = "http://";
+    private static final String HOST = "localhost:";
     private final String FILES_PATH = System.getProperty("user.dir");
+    private final URL baseUrl;
 
-    private String baseUrl = "http://localhost:";
-
-    public Http(int portNumber) {
-        this.baseUrl = baseUrl.concat(String.valueOf(portNumber)).concat("/");
+    public Http(int portNumber) throws MalformedURLException {
+        StringBuilder urlBuilder = new StringBuilder();
+        this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
     }
 
     /*
@@ -39,7 +43,6 @@ public class Http {
     public String processRequest(String request) {
         Map<String, String> requestData;
         String response = "";
-
         requestData = parseRequest(request);
         String responseBody = makeResponseBody(requestData.get(URL));
         response = makeResponse(responseBody);
@@ -81,7 +84,7 @@ public class Http {
         Arrays.stream(contents)
                 .forEach(file -> {
                     html.append("<li>")
-                            .append(String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName()))
+                            .append(buildAnchorTag(file))
                             .append("</li>");
                 });
         html.append("</ul>");
@@ -89,6 +92,10 @@ public class Http {
         html.append("</html>");
 
         return html.toString();
+    }
+
+    private String buildAnchorTag(File file) {
+        return String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName());
     }
 
     private Map<String, String> parseRequest(String request) {

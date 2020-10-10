@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build_unix.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build_unix.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build_windows.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build_windows.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Protocol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +119,7 @@
       <workItem from="1602343712715" duration="57000" />
       <workItem from="1602343785359" duration="60000" />
       <workItem from="1602343901830" duration="1910000" />
-      <workItem from="1602346924674" duration="420000" />
+      <workItem from="1602346924674" duration="1223000" />
     </task>
     <servers />
   </component>
@@ -164,10 +155,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" width="1192" height="853" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602344265311" />
-    <state x="690" y="428" key="extract.method.dialog" timestamp="1601593404269">
+    <state x="690" y="428" key="extract.method.dialog" timestamp="1602347685504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="428" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601593404269" />
+    <state x="690" y="428" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347685504" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1601335241735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
