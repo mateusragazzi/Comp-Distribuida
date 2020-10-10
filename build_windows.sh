@@ -5,11 +5,10 @@ compile() {
     rm -rf out
   fi
   mkdir out
-  javac -d out -cp ".;src" src/Server.java
+  javac -d out -cp "java;src" java/src/Server.java
 }
 
 run() {
-  echo "Running at http://localhost:$PORT"
   java -cp "out" src.Server "$PORT"
 }
 

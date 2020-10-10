@@ -36,7 +36,7 @@ public class Http {
     */
 
     // TODO: nao trata mensagens continuas do cliente
-    public String processInput(String request) {
+    public String processRequest(String request) {
         Map<String, String> requestData;
         String response = "";
 

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build_unix.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build_unix.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build_windows.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build_windows.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Protocol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Server.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.1\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1i3Jcs7SGZ5zD5nF2ZBPOVYsTF5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gabrielcosta\Documents\Comp-Distribuida" />
+      <recent name="C:\Users\gabrielcosta\Documents\Comp-Distribuida\java" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Shell Script.build_windows.sh">
+    <configuration name="build" type="ShConfigurationType">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/build_windows.sh/" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="false" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_windows.sh" type="ShConfigurationType" temporary="true">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/build_windows.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Shell Script.build" />
+      <item itemvalue="Shell Script.build_windows.sh" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.build_windows.sh" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="" />
+      <created>1601130424755</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601130424755</updated>
+      <workItem from="1601130426584" duration="19155000" />
+      <workItem from="1601255108094" duration="3000" />
+      <workItem from="1601295808685" duration="3397000" />
+      <workItem from="1601332897878" duration="5380000" />
+      <workItem from="1601382896639" duration="50000" />
+      <workItem from="1601401409889" duration="1071000" />
+      <workItem from="1601428643419" duration="2201000" />
+      <workItem from="1601468547780" duration="1341000" />
+      <workItem from="1601592869398" duration="4874000" />
+      <workItem from="1601728961708" duration="7851000" />
+      <workItem from="1601830305646" duration="127000" />
+      <workItem from="1601837034873" duration="714000" />
+      <workItem from="1601900537727" duration="60000" />
+      <workItem from="1602197188974" duration="1373000" />
+      <workItem from="1602248345536" duration="90000" />
+      <workItem from="1602283944736" duration="2202000" />
+      <workItem from="1602340158315" duration="1308000" />
+      <workItem from="1602343002066" duration="231000" />
+      <workItem from="1602343251802" duration="290000" />
+      <workItem from="1602343559504" duration="135000" />
+      <workItem from="1602343712715" duration="57000" />
+      <workItem from="1602343785359" duration="60000" />
+      <workItem from="1602343901830" duration="1910000" />
+      <workItem from="1602346924674" duration="420000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="845" y="383" width="670" height="274" key="#Notifications" timestamp="1601215615365">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="845" y="383" width="670" height="274" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1601215615365" />
+    <state x="440" y="94" key="#Project_Structure" timestamp="1602344209003">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1602344209003" />
+    <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602347135202">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347135202" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602347132169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602347132169" />
+    <state x="-6" y="86" width="1742" height="868" key="MergeDialog" timestamp="1601734533029">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-6" y="86" width="1742" height="868" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601734533029" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1601734533038">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601734533038" />
+    <state x="461" y="165" width="1192" height="853" key="SettingsEditor" timestamp="1602344265311">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" width="1192" height="853" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602344265311" />
+    <state x="690" y="428" key="extract.method.dialog" timestamp="1601593404269">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="428" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601593404269" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1601335241735">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601335241735" />
+  </component>
+</project>
