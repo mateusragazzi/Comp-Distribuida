@@ -26,8 +26,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/java/src/RequestProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/domain/response/FileDownloadResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/domain/response/HtmlResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/domain/response/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/domain/response/ResponseFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/exception/NotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +44,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -63,6 +70,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
@@ -74,19 +82,24 @@
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\gabrielcosta\Documents\Comp-Distribuida" />
       <recent name="C:\Users\gabrielcosta\Documents\Comp-Distribuida\java" />
     </key>
   </component>
   <component name="RunManager" selected="Shell Script.build_windows.sh">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -123,6 +136,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -157,11 +171,12 @@
       <workItem from="1602343785359" duration="60000" />
       <workItem from="1602343901830" duration="1910000" />
       <workItem from="1602346924674" duration="1223000" />
+      <workItem from="1602814841922" duration="2812000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -171,7 +186,7 @@
             <State>
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
-                  <entry key="Show.Git.Branches" value="true" />
+                  <entry key="Show.Git.Branches" value="false" />
                 </map>
               </option>
               <option name="FILTERS">
@@ -185,11 +200,17 @@
                   </entry>
                 </map>
               </option>
+              <option name="TEXT_FILTER_SETTINGS">
+                <TextFilterSettings>
+                  <option name="REGEX" value="true" />
+                </TextFilterSettings>
+              </option>
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="383" width="670" height="274" key="#Notifications" timestamp="1601215615365">
@@ -204,10 +225,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347135202" />
-    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1602641412765">
+    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1602817226506">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1602641412765" />
+    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1602817226506" />
+    <state x="266" y="27" width="824" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602816860799">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="266" y="27" width="824" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1366.741@0.27.1366.741" timestamp="1602816860799" />
+    <state x="100" y="127" width="1166" height="541" key="DiffContextDialog" timestamp="1602817656204">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="100" y="127" width="1166" height="541" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1602817656204" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602347132169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -224,10 +253,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" width="1192" height="853" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602344265311" />
-    <state x="690" y="428" key="extract.method.dialog" timestamp="1602347685504">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="483" y="239" width="524" height="485" key="extract.method.dialog" timestamp="1602815679681">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="690" y="428" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347685504" />
+    <state x="483" y="239" width="524" height="485" key="extract.method.dialog/0.27.1366.741@0.27.1366.741" timestamp="1602815679681" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1602814957429">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.27.1366.741@0.27.1366.741" timestamp="1602814957429" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1601335241735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

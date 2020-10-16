@@ -1,13 +1,18 @@
 package src;
 
+import src.domain.response.HtmlResponse;
+import src.domain.response.Response;
+import src.domain.response.ResponseFactory;
+
 import java.io.File;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO: implementar threads
 public class Http {
     public static final String URL = "url";
     public static final String METHOD = "method";
@@ -15,10 +20,10 @@ public class Http {
     private static final String PROTOCOL = "http://";
     private static final String HOST = "localhost:";
     private final String FILES_PATH = System.getProperty("user.dir");
+
     private final URL baseUrl;
 
     public Http(int portNumber) throws MalformedURLException {
-        StringBuilder urlBuilder = new StringBuilder();
         this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
     }
 
@@ -39,19 +44,16 @@ public class Http {
     <Dados do Documento>
     */
 
-    // TODO: nao trata mensagens continuas do cliente
-    public String processRequest(String request) {
+    public Response processRequest(String request) throws URISyntaxException {
         Map<String, String> requestData;
-        String response = "";
         requestData = parseRequest(request);
         String responseBody = makeResponseBody(requestData.get(URL));
-        response = makeResponse(responseBody);
 
-        return response;
+        return ResponseFactory.create(makeFileUri(requestData.get(URL)));
     }
 
     // TODO: melhorar formacao da resposta
-    private String makeResponse(String responseBody) {
+    private String makeHttpResponse(String responseBody) {
         String response;
         response = "HTTP/1.1 200 Document follows \r\n" +
                 "Server:  FACOM-CD-2020/1.0 \r\n" +
@@ -60,19 +62,13 @@ public class Http {
         return response;
     }
 
-    private String makeResponseBody(String url) {
-        url = FILES_PATH + url;
-        File requestedFile = new File(url);
-        return requestedFile.exists() ? processFile(requestedFile) : null;
-    }
-
     //TODO: Criar forma para download de arquivo
     private String processFile(File requestedFile) {
         if (requestedFile.isDirectory()) {
             File[] contents = requestedFile.listFiles();
             return listDirectoriesAsHtml(contents);
         }
-
+        System.out.println(requestedFile);
         return requestedFile.getAbsolutePath();
     }
 
@@ -82,11 +78,9 @@ public class Http {
         html.append("<body>");
         html.append("<ul>");
         Arrays.stream(contents)
-                .forEach(file -> {
-                    html.append("<li>")
-                            .append(buildAnchorTag(file))
-                            .append("</li>");
-                });
+                .forEach(file -> html.append("<li>")
+                        .append(buildAnchorTag(file))
+                        .append("</li>"));
         html.append("</ul>");
         html.append("</body>");
         html.append("</html>");
@@ -111,5 +105,13 @@ public class Http {
         }
 
         return requestData;
+    }
+
+    private URI makeFileUri(String url) throws URISyntaxException {
+        if(url.startsWith("/"))
+            url = FILES_PATH + url;
+        else
+            url = FILES_PATH + "/" + url;
+        return new URI(url);
     }
 }

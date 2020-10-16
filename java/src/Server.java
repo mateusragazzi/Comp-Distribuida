@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException{
         int portNumber = Integer.parseInt(args[0]);
         ServerSocket serverSocket = startServer(portNumber);
         while(true) {
