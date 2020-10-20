@@ -26,11 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/java/helpers/HttpStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Protocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,10 +202,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1602344209003" />
-    <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602347135202">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="1360" y="198" width="1084" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603236342602">
+      <screen x="1280" y="143" width="1366" height="768" />
     </state>
     <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347135202" />
+    <state x="1360" y="198" width="1084" height="713" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.32.1280.992/1280.143.1366.768@1280.143.1366.768" timestamp="1603236342602" />
     <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1602641412765">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

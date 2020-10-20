@@ -19,6 +19,7 @@ public class Http {
     private static final String HOST = "localhost:";
     private final String FILES_PATH = System.getProperty("user.dir");
     private final URL baseUrl;
+    private String callStack = "";
 
     public Http(int portNumber) throws MalformedURLException {
         this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
@@ -67,6 +68,11 @@ public class Http {
     }
 
     private String makeResponseBody(String url) {
+        /** Guarda na variável os caminhos acessados até o momento **/
+        if (!url.isEmpty() && !url.equals("/favicon.icon") && !url.equals("/")) {
+            callStack = url.replaceFirst("/", "") + '/';
+        }
+
         url = FILES_PATH + url;
         File requestedFile = new File(url);
         return requestedFile.exists() ? processFile(requestedFile) : null;
@@ -100,13 +106,8 @@ public class Http {
         return html.toString();
     }
 
-    /**
-     * @param file
-     * @return
-     * @todo Implementar anchor com diretório corrente
-     */
     private String buildAnchorTag(File file) {
-        return String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName());
+        return String.format("<a href='%s'>%s</a>", baseUrl + callStack + file.getName(), file.getName());
     }
 
     private Map<String, String> parseRequest(String request) {
