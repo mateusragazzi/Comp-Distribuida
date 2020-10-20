@@ -1,15 +1,12 @@
 package src;
 
-import src.domain.response.HtmlResponse;
 import src.domain.response.Response;
 import src.domain.response.ResponseFactory;
 
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +16,7 @@ public class Http {
     public static final String PROTOCOL_VERSION = "protocolVersion";
     private static final String PROTOCOL = "http://";
     private static final String HOST = "localhost:";
-    private final String FILES_PATH = System.getProperty("user.dir");
+    private static final String FILES_PATH = System.getProperty("user.dir");
 
     private final URL baseUrl;
 
@@ -47,49 +44,7 @@ public class Http {
     public Response processRequest(String request) throws URISyntaxException {
         Map<String, String> requestData;
         requestData = parseRequest(request);
-        String responseBody = makeResponseBody(requestData.get(URL));
-
-        return ResponseFactory.create(makeFileUri(requestData.get(URL)));
-    }
-
-    // TODO: melhorar formacao da resposta
-    private String makeHttpResponse(String responseBody) {
-        String response;
-        response = "HTTP/1.1 200 Document follows \r\n" +
-                "Server:  FACOM-CD-2020/1.0 \r\n" +
-                "Content-Type: text/html \r\n\n" +
-                responseBody;
-        return response;
-    }
-
-    //TODO: Criar forma para download de arquivo
-    private String processFile(File requestedFile) {
-        if (requestedFile.isDirectory()) {
-            File[] contents = requestedFile.listFiles();
-            return listDirectoriesAsHtml(contents);
-        }
-        System.out.println(requestedFile);
-        return requestedFile.getAbsolutePath();
-    }
-
-    private String listDirectoriesAsHtml(File[] contents) {
-        StringBuilder html = new StringBuilder();
-        html.append("<html>");
-        html.append("<body>");
-        html.append("<ul>");
-        Arrays.stream(contents)
-                .forEach(file -> html.append("<li>")
-                        .append(buildAnchorTag(file))
-                        .append("</li>"));
-        html.append("</ul>");
-        html.append("</body>");
-        html.append("</html>");
-
-        return html.toString();
-    }
-
-    private String buildAnchorTag(File file) {
-        return String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName());
+        return ResponseFactory.create(makeFileUri(requestData.get(URL)), baseUrl);
     }
 
     private Map<String, String> parseRequest(String request) {
