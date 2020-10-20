@@ -1,10 +1,8 @@
 package src;
 
-import src.domain.response.Response;
 import src.domain.response.ResponseFactory;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
@@ -41,10 +39,10 @@ public class Http {
     <Dados do Documento>
     */
 
-    public Response processRequest(String request) throws URISyntaxException {
+    public String processRequest(String request) throws URISyntaxException {
         Map<String, String> requestData;
         requestData = parseRequest(request);
-        return ResponseFactory.create(makeFileUri(requestData.get(URL)), baseUrl);
+        return ResponseFactory.create(makeFilePath(requestData.get(URL)), baseUrl).buildResponse();
     }
 
     private Map<String, String> parseRequest(String request) {
@@ -62,11 +60,11 @@ public class Http {
         return requestData;
     }
 
-    private URI makeFileUri(String url) throws URISyntaxException {
-        if(url.startsWith("/"))
-            url = FILES_PATH + url;
+    private String makeFilePath(String path){
+        if(path.startsWith("/"))
+            path = FILES_PATH + path;
         else
-            url = FILES_PATH + "/" + url;
-        return new URI(url);
+            path = FILES_PATH + "/" + path;
+        return path;
     }
 }

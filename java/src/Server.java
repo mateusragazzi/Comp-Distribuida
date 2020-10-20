@@ -18,7 +18,7 @@ public class Server {
     private static ServerSocket startServer(int portNumber) throws IOException {
         ServerSocket serverSocket = new ServerSocket(portNumber);
         String serverAddr = serverSocket.getInetAddress().getHostAddress();
-        System.out.println("Listening at http://localhost:" + portNumber);
+        System.out.printf("Listening at http://%s:%d%n", serverAddr, portNumber);
         return serverSocket;
     }
 }

@@ -9,26 +9,30 @@ import java.util.Arrays;
 public class HtmlResponse extends Response{
     private final URL baseUrl;
 
-    public HtmlResponse(URL baseUrl) {
+    public HtmlResponse(File requestedFile, URL baseUrl) {
+        super(requestedFile);
         this.baseUrl = baseUrl;
     }
 
-    public String makeHeaders() {
-        return makeBaseHeaders(HttpStatus.OK) + "\r\nContent-Type: text/html \r\n\n";
+    public String buildResponse() {
+        return makeHeaders() + makeResponseBody() + "\r\n";
+    }
+    protected String makeHeaders() {
+        return makeBaseHeaders(HttpStatus.OK) + "Content-Type: text/html \r\n\n";
     }
 
     @Override
-    public String makeResponse(File requestedFile) {
+    protected String makeResponseBody() {
         File[] contents = requestedFile.listFiles();
         return listDirectoriesAsHtml(contents);
     }
 
-    private String listDirectoriesAsHtml(File[] contents) {
+    private String listDirectoriesAsHtml(File[] directories) {
         StringBuilder html = new StringBuilder();
         html.append("<html>");
         html.append("<body>");
         html.append("<ul>");
-        Arrays.stream(contents)
+        Arrays.stream(directories)
                 .forEach(file -> html.append("<li>")
                         .append(buildAnchorTag(file))
                         .append("</li>"));

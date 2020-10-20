@@ -3,20 +3,20 @@ package src.domain.response;
 import src.exception.NotFoundException;
 
 import java.io.File;
-import java.net.URI;
 import java.net.URL;
 
 public class ResponseFactory {
-    public static Response create(URI fileUri, URL baseUrl) throws NotFoundException {
-        File requestedFile = new File(fileUri);
+    public static Response create(String filePath, URL baseUrl) throws NotFoundException {
+        System.out.println(filePath);
+        File requestedFile = new File(filePath);
 
         if (!requestedFile.exists()) {
-            throw new NotFoundException();
+            return new NotFoundResponse(requestedFile);
         }
         if (requestedFile.isDirectory()) {
-            return new HtmlResponse(baseUrl);
+            return new HtmlResponse(requestedFile, baseUrl);
         }
 
-        return new FileDownloadResponse();
+        return new FileDownloadResponse(requestedFile);
     }
 }

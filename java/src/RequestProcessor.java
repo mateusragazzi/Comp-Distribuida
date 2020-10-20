@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.Socket;
+import java.net.URISyntaxException;
 
 public class RequestProcessor implements Runnable {
     private final Socket clientSocket;
@@ -38,7 +39,7 @@ public class RequestProcessor implements Runnable {
             out.close();
             in.close();
             clientSocket.close();
-        }catch(IOException exception) {
+        }catch(IOException | URISyntaxException exception) {
             System.err.println(exception.getMessage());
         }
     }

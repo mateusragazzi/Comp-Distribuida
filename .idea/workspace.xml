@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BranchesTreeState">
-    <expand />
-    <select />
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/java/src/domain/HttpStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/src/domain/response/NotFoundResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/Client.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/Protocol.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/RequestProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/RequestProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/domain/response/FileDownloadResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/domain/response/FileDownloadResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/domain/response/HtmlResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/domain/response/HtmlResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/domain/response/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/domain/response/Response.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/src/domain/response/ResponseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/domain/response/ResponseFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/exception/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/exception/NotFoundException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +45,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,7 +75,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build_unix.sh" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -72,14 +91,16 @@
       <recent name="C:\Users\gabrielcosta\Documents\Comp-Distribuida\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.build_windows.sh">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="Shell Script.build_unix">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -92,6 +113,17 @@
       <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
       <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build_unix" type="ShConfigurationType">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/build_unix.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/usr/bin/zsh" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <method v="2" />
     </configuration>
@@ -108,6 +140,7 @@
     </configuration>
     <list>
       <item itemvalue="Shell Script.build" />
+      <item itemvalue="Shell Script.build_unix" />
       <item itemvalue="Shell Script.build_windows.sh" />
     </list>
     <recent_temporary>
@@ -203,26 +236,28 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1602344209003" />
-    <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602347135202">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347135202" />
-    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1602980267769">
+    <state x="80" y="32" width="1084" height="736" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603216274090">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1602980267769" />
+    <state x="112" y="291" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602347135202" />
+    <state x="80" y="32" width="1084" height="736" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1603216274090" />
+    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser" timestamp="1603216793537">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1603216793537" />
     <state x="266" y="27" width="824" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602816860799">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="266" y="27" width="824" height="741" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.27.1366.741@0.27.1366.741" timestamp="1602816860799" />
-    <state x="100" y="127" width="1166" height="541" maximized="true" key="DiffContextDialog" timestamp="1602979617056">
+    <state x="100" y="127" width="1166" height="541" key="DiffContextDialog" timestamp="1603214232315">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="100" y="127" width="1166" height="541" maximized="true" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1602979617056" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602347132169">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="100" y="127" width="1166" height="541" key="DiffContextDialog/0.27.1366.741@0.27.1366.741" timestamp="1603214232315" />
+    <state x="526" y="223" width="424" height="491" key="FileChooserDialogImpl" timestamp="1603216269399">
+      <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602347132169" />
+    <state x="526" y="223" width="424" height="491" key="FileChooserDialogImpl/0.27.1366.741@0.27.1366.741" timestamp="1603216269399" />
     <state x="-6" y="86" width="1742" height="868" key="MergeDialog" timestamp="1601734533029">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
