@@ -26,9 +26,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7cf0aaf-96d1-4ee9-b18a-77f89bf7c877" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/java/src/RequestProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/helpers/HttpStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/Http.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Http.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/Protocol.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/src/Protocol.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +73,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -123,6 +126,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -190,6 +194,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="845" y="383" width="670" height="274" key="#Notifications" timestamp="1601215615365">
@@ -208,6 +213,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="491" y="105" width="374" height="592" key="#com.intellij.ide.util.MemberChooser/0.27.1366.741@0.27.1366.741" timestamp="1602641412765" />
+    <state x="1697" y="371" width="521" height="317" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1603155645985">
+      <screen x="1280" y="143" width="1366" height="768" />
+    </state>
+    <state x="1697" y="371" width="521" height="317" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.32.1280.992/1280.143.1366.768@1280.143.1366.768" timestamp="1603155645985" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602347132169">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

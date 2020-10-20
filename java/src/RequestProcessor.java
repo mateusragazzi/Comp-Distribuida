@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.MalformedURLException;
 import java.net.Socket;
 
 public class RequestProcessor implements Runnable {
@@ -38,7 +37,7 @@ public class RequestProcessor implements Runnable {
             out.close();
             in.close();
             clientSocket.close();
-        }catch(IOException exception) {
+        } catch (IOException exception) {
             System.err.println(exception.getMessage());
         }
     }

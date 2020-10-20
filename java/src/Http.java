@@ -1,5 +1,7 @@
 package src;
 
+import helpers.HttpStatus;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,13 +14,13 @@ public class Http {
     public static final String URL = "url";
     public static final String METHOD = "method";
     public static final String PROTOCOL_VERSION = "protocolVersion";
+    public static final String STATUS = "STATUS";
     private static final String PROTOCOL = "http://";
     private static final String HOST = "localhost:";
     private final String FILES_PATH = System.getProperty("user.dir");
     private final URL baseUrl;
 
     public Http(int portNumber) throws MalformedURLException {
-        StringBuilder urlBuilder = new StringBuilder();
         this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
     }
 
@@ -45,19 +47,23 @@ public class Http {
         String response = "";
         requestData = parseRequest(request);
         String responseBody = makeResponseBody(requestData.get(URL));
-        response = makeResponse(responseBody);
+        response = makeResponse(responseBody, requestData.get(STATUS));
 
         return response;
     }
 
     // TODO: melhorar formacao da resposta
-    private String makeResponse(String responseBody) {
-        String response;
-        response = "HTTP/1.1 200 Document follows \r\n" +
-                "Server:  FACOM-CD-2020/1.0 \r\n" +
-                "Content-Type: text/html \r\n\n" +
-                responseBody;
-        return response;
+    private String makeResponse(String responseBody, String statusCode) {
+        StringBuilder response = new StringBuilder();
+
+        response.append("HTTP/1.1 ");
+        response.append(statusCode);
+        response.append(" Document follows \n");
+        response.append("Server:  FACOM-CD-2020/1.0 \r\n");
+        response.append("Content-Type: text/html \r\n\n");
+        response.append(responseBody);
+
+        return response.toString();
     }
 
     private String makeResponseBody(String url) {
@@ -94,6 +100,11 @@ public class Http {
         return html.toString();
     }
 
+    /**
+     * @param file
+     * @return
+     * @todo Implementar anchor com diretório corrente
+     */
     private String buildAnchorTag(File file) {
         return String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName());
     }
@@ -104,10 +115,16 @@ public class Http {
         String[] inputElements = request.split("\n");
         String[] requestFirstLine = inputElements[0].split(" ");
 
-        if (requestFirstLine[0].equalsIgnoreCase("GET")) {
-            requestData.put(METHOD, requestFirstLine[0]);
-            requestData.put(URL, requestFirstLine[1]);
-            requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
+        try {
+            if (requestFirstLine[0].equalsIgnoreCase("GET")) {
+                requestData.put(METHOD, requestFirstLine[0]);
+                requestData.put(URL, requestFirstLine[1]);
+                requestData.put(PROTOCOL_VERSION, requestFirstLine[2]);
+                requestData.put(STATUS, HttpStatus.OK.getStatusCode());
+            }
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            requestData.put(STATUS, HttpStatus.BAD_GATEWAY.getStatusCode());
+            return requestData;
         }
 
         return requestData;
