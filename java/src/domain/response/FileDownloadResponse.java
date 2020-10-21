@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-// TODO: arrumar resposta: enviar bytes do documento no corpo da resposta
+// TODO: download de arquivo binario (e.g pdf)
 public class FileDownloadResponse extends Response {
     public FileDownloadResponse(File requestedFile) {
         super(requestedFile);

@@ -1,12 +1,10 @@
 package src.domain.response;
 
-import src.exception.NotFoundException;
-
 import java.io.File;
 import java.net.URL;
 
 public class ResponseFactory {
-    public static Response create(String filePath, URL baseUrl) throws NotFoundException {
+    public static Response create(String filePath, URL baseUrl)  {
         System.out.println(filePath);
         File requestedFile = new File(filePath);
 

@@ -3,7 +3,6 @@ package src.domain.response;
 import src.domain.HttpStatus;
 
 import java.io.File;
-import java.net.URL;
 
 public abstract class Response {
     protected File requestedFile;
