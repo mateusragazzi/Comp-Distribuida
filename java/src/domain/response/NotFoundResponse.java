@@ -1,5 +1,7 @@
 package src.domain.response;
 
+import src.domain.HttpStatus;
+
 import java.io.File;
 
 public class NotFoundResponse extends Response{
@@ -9,16 +11,16 @@ public class NotFoundResponse extends Response{
 
     @Override
     protected String makeResponseBody() {
-        return null;
+        return "";
     }
 
     @Override
     protected String makeHeaders() {
-        return null;
+        return makeBaseHeaders(HttpStatus.NOT_FOUND);
     }
 
     @Override
     public String buildResponse() {
-        return null;
+        return makeHeaders();
     }
 }

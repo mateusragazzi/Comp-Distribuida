@@ -3,6 +3,10 @@ package src.domain.response;
 import src.domain.HttpStatus;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 // TODO: arrumar resposta: enviar bytes do documento no corpo da resposta
 public class FileDownloadResponse extends Response {
@@ -12,7 +16,7 @@ public class FileDownloadResponse extends Response {
 
     @Override
     protected String makeResponseBody() {
-        return processFile(requestedFile);
+        return processFile(requestedFile) + "\r\n\n";
     }
 
     @Override
@@ -21,8 +25,8 @@ public class FileDownloadResponse extends Response {
 
         return makeBaseHeaders(HttpStatus.OK) +
                 "Content-Type: application/octet-stream\r\n" +
-                String.format("\r\nContent-Disposition: attachment; filename=%s", fileName) +
-                "\r\n";
+                String.format("Content-Disposition: attachment; filename=%s", fileName) +
+                "\r\n\n";
     }
 
     @Override
@@ -31,6 +35,12 @@ public class FileDownloadResponse extends Response {
     }
 
     private String processFile(File requestedFile) {
-        return requestedFile.getAbsolutePath();
+        try {
+            byte[] bytes = Files.readAllBytes(Paths.get(requestedFile.getAbsolutePath()));
+            return new String(bytes, StandardCharsets.UTF_8);
+        } catch (IOException ie) {
+            System.err.println(ie.getMessage());
+            return "";
+        }
     }
 }
