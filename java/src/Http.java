@@ -22,27 +22,10 @@ public class Http {
         this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
     }
 
-    /*
-       Request
-        GET <sp> <Documento> <sp> HTTP/1.1 <crlf>
-       {Outras informacoes de cabecalho}
-       <crlf>
-    */
-
-    /*
-    Response
-    HTTP/1.1 <sp> 200 <sp> Document <sp> follows <crlf>
-    Server: <sp> <Server-Type> <crlf>
-    Content-type: <sp> <Document-Type> <crlf>
-    {Outras informacoes de cabecalho}
-    <crlf>
-    <Dados do Documento>
-    */
-
     public String processRequest(String request) throws URISyntaxException {
         Map<String, String> requestData;
         requestData = parseRequest(request);
-        return ResponseFactory.create(makeFilePath(requestData.get(URL)), baseUrl).buildResponse();
+        return ResponseFactory.create(requestData.get(URL), baseUrl).buildResponse();
     }
 
     private Map<String, String> parseRequest(String request) {
@@ -58,13 +41,5 @@ public class Http {
         }
 
         return requestData;
-    }
-
-    private String makeFilePath(String path){
-        if(path.startsWith("/"))
-            path = FILES_PATH + path;
-        else
-            path = FILES_PATH + "/" + path;
-        return path;
     }
 }

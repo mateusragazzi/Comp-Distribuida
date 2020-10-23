@@ -8,10 +8,12 @@ import java.util.Arrays;
 
 public class HtmlResponse extends Response{
     private final URL baseUrl;
+    private String callStack;
 
-    public HtmlResponse(File requestedFile, URL baseUrl) {
+    public HtmlResponse(File requestedFile, URL baseUrl, String callStack) {
         super(requestedFile);
         this.baseUrl = baseUrl;
+        this.callStack = callStack;
     }
 
     public String buildResponse() {
@@ -44,6 +46,6 @@ public class HtmlResponse extends Response{
     }
 
     private String buildAnchorTag(File file) {
-        return String.format("<a href='%s'>%s</a>", baseUrl + file.getName(), file.getName());
+        return String.format("<a href='%s'>%s</a>", baseUrl + callStack + file.getName(), file.getName());
     }
 }
