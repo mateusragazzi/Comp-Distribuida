@@ -8,9 +8,9 @@ public class Server {
     public static void main(String[] args) throws IOException{
         int portNumber = Integer.parseInt(args[0]);
         ServerSocket serverSocket = startServer(portNumber);
-        while(true) {
+        while (true) {
             Socket clientSocket = serverSocket.accept();
-            Thread t = new Thread(new RequestProcessor(clientSocket, portNumber));
+            Thread t = new Thread(new src.RequestProcessor(clientSocket, portNumber));
             t.start();
         }
     }
