@@ -14,7 +14,6 @@ public class Http {
     public static final String PROTOCOL_VERSION = "protocolVersion";
     private static final String PROTOCOL = "http://";
     private static final String HOST = "localhost:";
-    private static final String FILES_PATH = System.getProperty("user.dir");
 
     private final URL baseUrl;
 
