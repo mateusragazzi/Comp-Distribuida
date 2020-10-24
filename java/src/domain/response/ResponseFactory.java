@@ -11,14 +11,13 @@ public class ResponseFactory {
     public static Response create(String filePath, URL baseUrl)  {
         File requestedFile = new File(getFilePath(filePath));
 
-        if (!requestedFile.exists()) {
-            return new NotFoundResponse(requestedFile);
-        }
         if (requestedFile.isDirectory()) {
             return new HtmlResponse(requestedFile, baseUrl, callStack);
         }
-
-        return new FileDownloadResponse(requestedFile);
+        if(requestedFile.isFile()) {
+            return new FileDownloadResponse(requestedFile);
+        }
+        return new NotFoundResponse(requestedFile);
     }
 
     private static String getFilePath(String filePath) {
