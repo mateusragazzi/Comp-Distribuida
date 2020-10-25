@@ -49,12 +49,12 @@ public class CgiBin extends Response {
                         .append(lineRead)
                         .append("\r\n");
             proc.destroy();
-        } catch (IOException | ArrayIndexOutOfBoundsException e) {
-            System.err.println(e.getMessage());
-            return makeBaseHeaders(HttpStatus.BAD_REQUEST);
+        } catch (IOException | ArrayIndexOutOfBoundsException exception) {
+            Arrays.stream(exception.getStackTrace()).forEach(e -> System.err.println(e.toString()));
+            return makeBaseHeaders(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.getMessage().length());
         }
-
-        return makeBaseHeaders(HttpStatus.OK) + procOutput.toString();
+        String content =  procOutput.toString();
+        return makeBaseHeaders(HttpStatus.OK, content.length()) + content;
     }
 
     private String getRequestedFilePath() {

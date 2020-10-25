@@ -17,14 +17,16 @@ public class RequestProcessor implements Runnable {
 
     @Override
     public void run() {
+        OutputStream out = null;
         try {
-            OutputStream out = clientSocket.getOutputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
+            out = clientSocket.getOutputStream();
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(clientSocket.getInputStream()));
             String inputLine, outputLine;
             StringBuilder request = new StringBuilder();
-
             Http http = new Http(portNumber);
+
+            clientSocket.setSoTimeout(10 * 1000);
 
             while ((inputLine = in.readLine()) != null) {
                 request.append(inputLine).append("\r\n");
@@ -34,11 +36,16 @@ public class RequestProcessor implements Runnable {
                     break;
                 }
             }
-            out.close();
-            in.close();
-            clientSocket.close();
-        } catch (IOException exception) {
-            System.err.println(exception.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
