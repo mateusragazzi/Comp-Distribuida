@@ -10,8 +10,10 @@ import java.nio.file.Paths;
 
 // TODO: download de arquivo binario (e.g pdf)
 public class FileDownloadResponse extends Response {
+    private final File requestedFile;
+
     public FileDownloadResponse(File requestedFile) {
-        super(requestedFile);
+        this.requestedFile = requestedFile;
     }
 
     @Override

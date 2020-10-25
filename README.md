@@ -16,18 +16,14 @@ cd Comp-Distribuida
 ```
 ### Local
 ```
-chmod +x build_*.sh
+chmod +x build_[SEU_AMBIENTE].sh
 ```
 ```
-./build_*.sh
-```
-### Docker
-Crie o container, utilizando:
-```
-docker build -t comp-distribuida .
+./build_[SEU_AMBIENTE].sh
 ```
 
-E execute o container, utilizando:
+### URL do CGI-bin
 ```
-docker run comp-distribuida
+http://0.0.0.0:8080/cgi-bin/datetime.sh?username=SeuNome
+
 ```

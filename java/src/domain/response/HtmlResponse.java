@@ -7,11 +7,12 @@ import java.net.URL;
 import java.util.Arrays;
 
 public class HtmlResponse extends Response{
+    private final File requestedFile;
     private final URL baseUrl;
-    private String callStack;
+    private final String callStack;
 
     public HtmlResponse(File requestedFile, URL baseUrl, String callStack) {
-        super(requestedFile);
+        this.requestedFile = requestedFile;
         this.baseUrl = baseUrl;
         this.callStack = callStack;
     }

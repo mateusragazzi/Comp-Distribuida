@@ -1,9 +1,10 @@
 package src;
 
-import java.io.*;
-import java.net.MalformedURLException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.Socket;
-import java.net.URISyntaxException;
 
 public class RequestProcessor implements Runnable {
     private final Socket clientSocket;
@@ -29,7 +30,6 @@ public class RequestProcessor implements Runnable {
                 request.append(inputLine).append("\r\n");
                 if (inputLine.isEmpty()) {
                     outputLine = http.processRequest(request.toString());
-                    System.out.println(outputLine);
                     out.write(outputLine.getBytes());
                     break;
                 }

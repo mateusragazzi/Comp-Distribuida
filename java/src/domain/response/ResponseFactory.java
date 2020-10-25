@@ -12,7 +12,7 @@ public class ResponseFactory {
         File requestedFile = new File(getFilePath(filePath));
 
         if (filePath.contains("cgi-bin")) {
-            return new CgiBin(requestedFile);
+            return new CgiBin(filePath);
         }
         if (requestedFile.isDirectory()) {
             return new HtmlResponse(requestedFile, baseUrl, callStack);
@@ -20,7 +20,7 @@ public class ResponseFactory {
         if (requestedFile.isFile()) {
             return new FileDownloadResponse(requestedFile);
         }
-        return new NotFoundResponse(requestedFile);
+        return new NotFoundResponse();
     }
 
     private static String getFilePath(String filePath) {

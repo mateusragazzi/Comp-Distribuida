@@ -5,11 +5,6 @@ import src.domain.HttpStatus;
 import java.io.File;
 
 public abstract class Response {
-    protected File requestedFile;
-
-    public Response(File requestedFile){
-        this.requestedFile = requestedFile;
-    }
     protected abstract String makeResponseBody();
 
     protected abstract String makeHeaders();
