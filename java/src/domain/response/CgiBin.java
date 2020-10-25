@@ -80,6 +80,10 @@ public class CgiBin extends Response {
         return url.split("\\?");
     }
 
+    /**
+     * Função responsável por criar as variáveis de ambiente passadas por Query String.
+     * @param pb - contém o ambiente que o código será executado.
+     */
     private void createEnvVariables(ProcessBuilder pb) {
         Map<String, String> env = pb.environment();
         String queryParams = parseQueryParamsFromSlug(filePath)[FILE];
