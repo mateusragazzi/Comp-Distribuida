@@ -8,13 +8,16 @@ public class ResponseFactory {
     private static String callStack = "";
     private static final String FILES_PATH = System.getProperty("user.dir");
 
-    public static Response create(String filePath, URL baseUrl)  {
+    public static Response create(String filePath, URL baseUrl) {
         File requestedFile = new File(getFilePath(filePath));
 
+        if (filePath.contains("cgi-bin")) {
+            return new CgiBin(requestedFile);
+        }
         if (requestedFile.isDirectory()) {
             return new HtmlResponse(requestedFile, baseUrl, callStack);
         }
-        if(requestedFile.isFile()) {
+        if (requestedFile.isFile()) {
             return new FileDownloadResponse(requestedFile);
         }
         return new NotFoundResponse(requestedFile);

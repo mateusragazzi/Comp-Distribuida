@@ -21,10 +21,12 @@ public class Http {
         this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
     }
 
-    public String processRequest(String request) throws URISyntaxException {
+    public String processRequest(String request) {
         Map<String, String> requestData;
         requestData = parseRequest(request);
-        return ResponseFactory.create(requestData.get(URL), baseUrl).buildResponse();
+        return ResponseFactory
+                .create(requestData.get(URL), baseUrl)
+                .buildResponse();
     }
 
     private Map<String, String> parseRequest(String request) {

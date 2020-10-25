@@ -29,6 +29,7 @@ public class RequestProcessor implements Runnable {
                 request.append(inputLine).append("\r\n");
                 if (inputLine.isEmpty()) {
                     outputLine = http.processRequest(request.toString());
+                    System.out.println(outputLine);
                     out.write(outputLine.getBytes());
                     break;
                 }
@@ -36,7 +37,7 @@ public class RequestProcessor implements Runnable {
             out.close();
             in.close();
             clientSocket.close();
-        }catch(IOException | URISyntaxException exception) {
+        } catch (IOException exception) {
             System.err.println(exception.getMessage());
         }
     }
