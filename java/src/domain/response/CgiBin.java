@@ -50,11 +50,13 @@ public class CgiBin extends Response {
                         .append("\r\n");
             proc.destroy();
         } catch (IOException | ArrayIndexOutOfBoundsException exception) {
-            Arrays.stream(exception.getStackTrace()).forEach(e -> System.err.println(e.toString()));
+            exception.printStackTrace();
             return makeBaseHeaders(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.getMessage().length());
         }
-        String content =  procOutput.toString();
-        return makeBaseHeaders(HttpStatus.OK, content.length()) + content;
+        String content = procOutput.toString();
+        return makeBaseHeaders(HttpStatus.OK, content.length()) +
+                "Content-Type: text/html\r\n\n" +
+                content;
     }
 
     private String getRequestedFilePath() {
