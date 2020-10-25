@@ -2,12 +2,7 @@ package src.domain.response;
 
 import src.domain.HttpStatus;
 
-import java.io.File;
-
-public class NotFoundResponse extends Response{
-    public NotFoundResponse(File requestedFile) {
-        super(requestedFile);
-    }
+public class NotFoundResponse extends Response {
 
     @Override
     protected String makeResponseBody() {
