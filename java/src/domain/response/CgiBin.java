@@ -49,9 +49,9 @@ public class CgiBin extends Response {
                         .append(lineRead)
                         .append("\r\n");
             proc.destroy();
-        } catch (IOException e) {
+        } catch (IOException | ArrayIndexOutOfBoundsException e) {
             System.err.println(e.getMessage());
-            return makeBaseHeaders(HttpStatus.NOT_FOUND);
+            return makeBaseHeaders(HttpStatus.BAD_REQUEST);
         }
 
         return makeBaseHeaders(HttpStatus.OK) + procOutput.toString();
@@ -59,8 +59,7 @@ public class CgiBin extends Response {
 
     private String getRequestedFilePath() {
         String[] filePathTokens = parseQueryParamsFromSlug(this.filePath)[SLUG].split("/");
-        String filePath = filePathTokens[filePathTokens.length - 1];
-        return filePath;
+        return filePathTokens[filePathTokens.length - 1];
     }
 
     private String[] parseQueryParamsFromSlug(String url) {
