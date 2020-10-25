@@ -25,7 +25,7 @@ public class FileDownloadResponse extends Response {
     protected String makeHeaders() {
         String fileName = requestedFile.getName();
 
-        return makeBaseHeaders(HttpStatus.OK) +
+        return makeBaseHeaders(HttpStatus.OK, (int) requestedFile.length()) +
                 "Content-Type: application/octet-stream\r\n" +
                 String.format("Content-Disposition: attachment; filename=%s", fileName) +
                 "\r\n\n";

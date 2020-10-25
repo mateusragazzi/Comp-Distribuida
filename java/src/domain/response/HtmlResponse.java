@@ -20,8 +20,9 @@ public class HtmlResponse extends Response{
     public String buildResponse() {
         return makeHeaders() + makeResponseBody() + "\r\n";
     }
+
     protected String makeHeaders() {
-        return makeBaseHeaders(HttpStatus.OK) + "Content-Type: text/html \r\n\n";
+        return makeBaseHeaders(HttpStatus.OK, makeResponseBody().length()) + "Content-Type: text/html \r\n\n";
     }
 
     @Override
