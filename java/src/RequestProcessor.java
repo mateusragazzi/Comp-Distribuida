@@ -15,6 +15,9 @@ public class RequestProcessor implements Runnable {
         this.portNumber = portNumber;
     }
 
+    /**
+     * Função responsável por ler a requisição e escrever a resposta para o cliente.
+     */
     @Override
     public void run() {
         OutputStream out = null;
