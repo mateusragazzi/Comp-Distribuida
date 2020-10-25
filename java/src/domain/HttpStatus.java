@@ -13,10 +13,18 @@ public enum HttpStatus {
         this.message = message;
     }
 
+    /**
+     * Função que retorna os códigos de uma determinada requisição.
+     * @return String código de uma requisição.
+     */
     public String getStatusCode() {
         return statusCode;
     }
 
+    /**
+     * Função que retorna a mensagem de uma requisição.
+     * @return String status da requisição.
+     */
     public String getMessage() {
         return message;
     }

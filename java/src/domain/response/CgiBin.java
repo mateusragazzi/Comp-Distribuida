@@ -15,19 +15,31 @@ public class CgiBin extends Response {
         this.filePath = filePath;
     }
 
-    @Override
-    protected String makeResponseBody() {
-        return "";
-    }
-
-    @Override
-    protected String makeHeaders() {
-        return "";
-    }
-
+    /**
+     * Monta a resposta para o servidor, concatenando o header com o body
+     * Utilizada em Http.java, caso a Factory tenha o invocado.
+     * @return resposta formada.
+     */
     @Override
     public String buildResponse() {
         return readProcessOutput();
+    }
+
+    /**
+     * Monta o body da requisição, que é a saída do Script.
+     * @return saída do programa executado.
+     */
+    @Override
+    protected String makeResponseBody() { return ""; }
+
+    /**
+     * Monta o header para servidor.
+     * Entretanto, o CGI-BIN tem o header especificado dentro script a ser executado.
+     * @return String vazia.
+     */
+    @Override
+    protected String makeHeaders() {
+        return "";
     }
 
     private String readProcessOutput() {

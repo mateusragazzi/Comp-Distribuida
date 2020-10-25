@@ -21,6 +21,11 @@ public class Http {
         this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
     }
 
+    /**
+     * Função que processa uma requisição, invocando a Factory
+     * @param request
+     * @return retorna ao servidor uma resposta à requisição feita.
+     */
     public String processRequest(String request) {
         Map<String, String> requestData;
         requestData = parseRequest(request);
@@ -29,6 +34,11 @@ public class Http {
                 .buildResponse();
     }
 
+    /**
+     * Realiza a leitura da request, para determinar o método, qual o protocolo e a url desejada
+     * @param request request feita pelo cliente
+     * @return map contendo os itens encontrados.
+     */
     private Map<String, String> parseRequest(String request) {
         Map<String, String> requestData = new HashMap<>();
 
