@@ -42,6 +42,10 @@ public class CgiBin extends Response {
         return "";
     }
 
+    /**
+     * Cria o processo para a execução do script e obtém sua saída padrão
+     * @return Resposta para a requisição do cgi-bin com saída padrão do script
+     */
     private String readProcessOutput() {
         String filePath = getRequestedFilePath();
         StringBuilder procOutput = new StringBuilder();

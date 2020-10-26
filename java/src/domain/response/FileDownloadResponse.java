@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-// TODO: download de arquivo binario (e.g pdf)
 public class FileDownloadResponse extends Response {
     private final File requestedFile;
 
@@ -63,7 +62,7 @@ public class FileDownloadResponse extends Response {
             byte[] bytes = Files.readAllBytes(Paths.get(requestedFile.getAbsolutePath()));
             return new String(bytes, StandardCharsets.UTF_8);
         } catch (IOException ie) {
-            System.err.println(ie.getMessage());
+            ie.printStackTrace();
             return "";
         }
     }
