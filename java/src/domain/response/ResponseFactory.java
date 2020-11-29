@@ -26,13 +26,13 @@ public class ResponseFactory {
         if (requestedFile.isDirectory()) {
             return new HtmlResponse(requestedFile, baseUrl, callStack);
         }
-        if (requestedFile.isFile() && isNotStatic(requestedFile)) {
+        if (requestedFile.isFile() && !isStatic(requestedFile)) {
             return new FileDownloadResponse(requestedFile);
         }
         return new NotFoundResponse();
     }
 
-    private static boolean isNotStatic(File requestedFile) {
+    private static boolean isStatic(File requestedFile) {
         String fileName = requestedFile.getName();
         return fileName.endsWith(".js") ||
                 fileName.endsWith(".ts") ||
