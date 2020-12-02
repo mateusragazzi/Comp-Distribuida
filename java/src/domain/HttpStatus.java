@@ -2,8 +2,9 @@ package src.domain;
 
 public enum HttpStatus {
     OK("200", "Document follows"),
-    NOT_FOUND("404", "Document Not Found"),
-    BAD_REQUEST("400", "Bad Request");
+    NOT_FOUND("404", "Documento not found"),
+    BAD_REQUEST("400", "Bad Request"),
+    METHOD_NOT_ALLOWED("405", "Method not allowed");
 
     private final String statusCode;
     private final String message;
@@ -15,6 +16,7 @@ public enum HttpStatus {
 
     /**
      * Função que retorna os códigos de uma determinada requisição.
+     *
      * @return String código de uma requisição.
      */
     public String getStatusCode() {
@@ -23,6 +25,7 @@ public enum HttpStatus {
 
     /**
      * Função que retorna a mensagem de uma requisição.
+     *
      * @return String status da requisição.
      */
     public String getMessage() {
