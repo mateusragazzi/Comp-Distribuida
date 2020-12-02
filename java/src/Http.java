@@ -1,8 +1,8 @@
 package src;
 
+import src.adapter.rest.Request;
 import src.domain.exceptions.HttpException;
 import src.domain.exceptions.MethodNotAllowedException;
-import src.domain.response.ResponseFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,39 +12,21 @@ import java.util.Map;
 public class Http {
     public static final String PATH = "url";
     public static final String METHOD = "method";
-    private static final String PROTOCOL = "http://";
-    private static final String HOST = "localhost:";
     private static final String BODY = "body";
 
-    private final URL baseUrl;
+    private final Router router = new Router();
 
-    public Http(int portNumber) throws MalformedURLException {
-        this.baseUrl = new URL(PROTOCOL + HOST + portNumber + "/");
-    }
-
-    /**
-     * Função que processa uma requisição, invocando a Factory
-     *
-     * @param request
-     * @return retorna ao servidor uma resposta à requisição feita.
-     */
-    public String processRequest(String request) {
+    public String processRequest(String rawRequest) {
         Map<String, String> requestData;
         try {
-            requestData = parseRequest(request);
-
-            return ResponseFactory.create(requestData.get(PATH), baseUrl).buildResponse();
+            requestData = parseRequest(rawRequest);
+            Request request = new Request(requestData);
+            return router.route(request);
         } catch (HttpException httpException) {
-            return ResponseFactory.createError(httpException);
+            return httpException.statusCode();
         }
     }
 
-    /**
-     * Extrai informações da requisição HTTP
-     *
-     * @param request request feita pelo cliente
-     * @return map contendo os itens encontrados.
-     */
     private Map<String, String> parseRequest(String request) throws MethodNotAllowedException {
         Map<String, String> requestData = new HashMap<>();
 
