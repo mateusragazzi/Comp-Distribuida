@@ -1,11 +1,21 @@
 package src.adapter.rest;
 
+import java.util.Map;
+
 public class Request {
     private final String method;
     private final String path;
     private final String params;
     private final String host;
     private final String body;
+
+    public Request(Map<String, String> request) {
+        this.method = request.get("method");
+        this.path = request.get("path");
+        this.params = request.get("params");
+        this.host = request.get("host");
+        this.body = request.get("body");
+    }
 
     public Request(String method, String path, String params, String host, String body) {
         this.method = method;

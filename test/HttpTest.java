@@ -2,7 +2,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import src.Http;
 import src.adapter.rest.Request;
-import src.domain.exceptions.MethodNotAllowedException;
 
 import java.net.MalformedURLException;
 
