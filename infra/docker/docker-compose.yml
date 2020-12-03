@@ -4,14 +4,12 @@ services:
 #TODO: Inserir webservice Java
   db:
     image: mysql
+    container_name: webservice_mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
       - 3306:3306
     volumes:
-      - db-data:/var/lib/mysql/data
+      - ./sql:/data
     environment:
       MYSQL_ROOT_PASSWORD: root
-
-volumes:
-  db-data:
