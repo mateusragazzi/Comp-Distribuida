@@ -2,22 +2,19 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import src.Http;
 import src.adapter.rest.Request;
-
-import java.net.MalformedURLException;
+import src.domain.response.Response;
 
 public class HttpTest {
-    private final Http HTTP = new Http(8080);
-
-    public HttpTest() throws MalformedURLException {
-    }
+    private final Http HTTP = new Http();
 
     @Test
     public void shouldParseARequestWithHttpBody() {
-        String requestData = "{ movie: { id: 1 } }";
-        Request httpRequest = new HttpRequestBuilder().withMethod("POST").withBody(requestData).build();
+        String requestData = "{actors:{id:1}}";
+        String path = "movies";
+        Request httpRequest = new HttpRequestBuilder().withPath(path).withMethod("POST").withBody(requestData).build();
 
-        String response = HTTP.processRequest(httpRequest.toString());
+        Response response = HTTP.processRequest(httpRequest.toString());
 
-        Assertions.assertFalse(response.isEmpty());
+        Assertions.assertNotNull(response);
     }
 }

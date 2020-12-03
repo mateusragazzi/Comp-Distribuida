@@ -18,7 +18,7 @@ public class Server {
         ServerSocket serverSocket = startServer(portNumber);
         while (true) {
             Socket clientSocket = serverSocket.accept();
-            Thread t = new Thread(new RequestProcessor(clientSocket, portNumber));
+            Thread t = new Thread(new RequestProcessor(clientSocket));
             t.start();
         }
     }

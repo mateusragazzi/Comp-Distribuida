@@ -1,4 +1,4 @@
-package src.domain.exceptions;
+package src.domain.exception;
 
 import src.domain.HttpStatus;
 

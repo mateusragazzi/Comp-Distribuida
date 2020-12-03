@@ -1,5 +1,7 @@
 package src;
 
+import src.domain.response.Response;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,11 +10,8 @@ import java.net.Socket;
 
 public class RequestProcessor implements Runnable {
     private final Socket clientSocket;
-    private final Integer portNumber;
-
-    public RequestProcessor(Socket clientSocket, Integer portNumber) {
+    public RequestProcessor(Socket clientSocket) {
         this.clientSocket = clientSocket;
-        this.portNumber = portNumber;
     }
 
     /**
@@ -27,14 +26,15 @@ public class RequestProcessor implements Runnable {
                     new InputStreamReader(clientSocket.getInputStream()));
             String inputLine, outputLine;
             StringBuilder request = new StringBuilder();
-            Http http = new Http(portNumber);
+            Http http = new Http();
 
             clientSocket.setSoTimeout(10 * 1000);
 
             while ((inputLine = in.readLine()) != null) {
                 request.append(inputLine).append("\r\n");
                 if (inputLine.isEmpty()) {
-                    outputLine = http.processRequest(request.toString());
+                    Response response = http.processRequest(request.toString());
+                    outputLine = response.toString();
                     out.write(outputLine.getBytes());
                     break;
                 }
