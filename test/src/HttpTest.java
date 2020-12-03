@@ -1,3 +1,5 @@
+package src;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import src.Http;
@@ -11,7 +13,7 @@ public class HttpTest {
     public void shouldParseARequestWithHttpBody() {
         String requestData = "{actors:{id:1}}";
         String path = "movies";
-        Request httpRequest = new HttpRequestBuilder().withPath(path).withMethod("POST").withBody(requestData).build();
+        Request httpRequest = new RequestBuilder().withPath(path).withMethod("POST").withBody(requestData).build();
 
         Response response = HTTP.processRequest(httpRequest.toString());
 
