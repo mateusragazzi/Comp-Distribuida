@@ -25,6 +25,11 @@ public class HttpRequestBuilder {
         return this;
     }
 
+    public HttpRequestBuilder withPath(String path) {
+        this.path = path;
+        return this;
+    }
+
     public Request build() {
         return new Request(method, path, params, host, body);
     }

@@ -1,15 +1,15 @@
 package src.domain;
 
 public enum HttpStatus {
-    OK("200", "Document follows"),
-    NOT_FOUND("404", "Documento not found"),
-    BAD_REQUEST("400", "Bad Request"),
-    METHOD_NOT_ALLOWED("405", "Method not allowed");
+    OK(200, "Document follows"),
+    NOT_FOUND(404, "Documento not found"),
+    BAD_REQUEST(400, "Bad Request"),
+    METHOD_NOT_ALLOWED(405, "Method not allowed");
 
-    private final String statusCode;
+    private final int statusCode;
     private final String message;
 
-    HttpStatus(String statusCode, String message) {
+    HttpStatus(int statusCode, String message) {
         this.statusCode = statusCode;
         this.message = message;
     }
@@ -19,7 +19,7 @@ public enum HttpStatus {
      *
      * @return String código de uma requisição.
      */
-    public String getStatusCode() {
+    public int getStatusCode() {
         return statusCode;
     }
 

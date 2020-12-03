@@ -1,29 +1,31 @@
 package src;
 
 import src.adapter.rest.Request;
-import src.domain.exceptions.HttpException;
-import src.domain.exceptions.MethodNotAllowedException;
+import src.domain.exception.HttpException;
+import src.domain.exception.MethodNotAllowedException;
+import src.domain.response.HttpResponseDTO;
+import src.domain.response.Response;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Http {
-    public static final String PATH = "url";
+    public static final String PATH = "path";
     public static final String METHOD = "method";
     private static final String BODY = "body";
 
     private final Router router = new Router();
 
-    public String processRequest(String rawRequest) {
+    public Response processRequest(String rawRequest) {
         Map<String, String> requestData;
         try {
             requestData = parseRequest(rawRequest);
             Request request = new Request(requestData);
             return router.route(request);
         } catch (HttpException httpException) {
-            return httpException.statusCode();
+            HttpResponseDTO dto = new HttpResponseDTO();
+            dto.statusCode = httpException.statusCode();
+            return new Response(dto);
         }
     }
 

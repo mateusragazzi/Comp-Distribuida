@@ -1,4 +1,4 @@
-package src.domain.exceptions;
+package src.domain.exception;
 
 import src.domain.HttpStatus;
 
@@ -10,7 +10,7 @@ public class HttpException extends Exception {
         this.httpStatus = httpStatus;
     }
 
-    public String statusCode() {
+    public int statusCode() {
         return httpStatus.getStatusCode();
     }
 }

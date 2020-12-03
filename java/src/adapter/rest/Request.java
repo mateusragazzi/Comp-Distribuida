@@ -1,6 +1,7 @@
 package src.adapter.rest;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class Request {
     private final String method;
@@ -9,11 +10,13 @@ public class Request {
     private final String host;
     private final String body;
 
+
     public Request(Map<String, String> request) {
         this.method = request.get("method");
         this.path = request.get("path");
-        this.params = request.get("params");
-        this.host = request.get("host");
+        this.params = Objects.nonNull(request.get("params")) ? request.get("params") : "";
+        // TODO: temporario
+        this.host = "http://localhost:8080";
         this.body = request.get("body");
     }
 
@@ -23,26 +26,6 @@ public class Request {
         this.params = params;
         this.body = body;
         this.host = host;
-    }
-
-    public Request(String method, String path, String params, String host) {
-        this.method = method;
-        this.path = path;
-        this.params = params;
-        this.host = host;
-        body = "";
-    }
-
-    public Request(String method, String path, String host) {
-        this.method = method;
-        this.path = path;
-        this.host = host;
-        params = "";
-        body = "";
-    }
-
-    public String getMethod() {
-        return method;
     }
 
     public String getPath() {
@@ -55,6 +38,10 @@ public class Request {
 
     public String getBody() {
         return body;
+    }
+
+    public String getMethod() {
+        return method;
     }
 
     @Override
