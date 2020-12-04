@@ -1,3 +1,5 @@
+package src.adapter;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ActorDAOTest {
-    private ActorDao actorDao = new ActorDao();
+    private final ActorDao actorDao = new ActorDao();
     private long IDForTest, IDToDelete;
 
     @BeforeEach
