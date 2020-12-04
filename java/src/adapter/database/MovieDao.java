@@ -118,7 +118,7 @@ public class MovieDao {
 
         boolean response = false;
 
-        String sql = "UPDATE movies SET title = ?, birthdate = ? WHERE id = ?;";
+        String sql = "UPDATE movies SET title = ?, synopsis = ? WHERE id = ?;";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, movie.getTitle());
