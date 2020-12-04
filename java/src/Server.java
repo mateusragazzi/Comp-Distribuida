@@ -13,18 +13,19 @@ public class Server {
      * @param args parâmetro que contém, na primeira posição, a porta desejada.
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         int portNumber = Integer.parseInt(args[0]);
         ServerSocket serverSocket = startServer(portNumber);
         while (true) {
             Socket clientSocket = serverSocket.accept();
-            Thread t = new Thread(new src.RequestProcessor(clientSocket, portNumber));
+            Thread t = new Thread(new RequestProcessor(clientSocket));
             t.start();
         }
     }
 
     /**
      * Inicializa o socket com a porta informada.
+     *
      * @param portNumber porta solicitada.
      * @return retorna um socket, caso ocorreu um sucesso.
      * @throws IOException
