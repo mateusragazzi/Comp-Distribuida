@@ -1,11 +1,22 @@
 package src.domain.entity;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 
+@XmlRootElement(name = "movie")
 public class Movie {
     private Long ID;
+
+    @XmlElement(name = "title")
     private String title;
+
+    @XmlElement(name = "synopsis")
     private String synopsis;
+
+    public Movie() {
+    }
 
     public Movie(Long ID, String title, String synopsis) {
         this.title = title;
@@ -29,6 +40,7 @@ public class Movie {
         return synopsis;
     }
 
+    @XmlAttribute
     public void setID(Long ID) {
         this.ID = ID;
     }
