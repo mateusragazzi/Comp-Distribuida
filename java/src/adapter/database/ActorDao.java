@@ -13,6 +13,11 @@ public class ActorDao {
         this.connectionManager = new ConnectionManager();
     }
 
+    /**
+     * Função que cria o ator enviado por parâmetro
+     * @param actor ator a ser criado
+     * @return retorna o ator, com o ID gerado pelo banco.
+     */
     public Actor create(Actor actor) {
         Connection connection = this.connectionManager.createConnection();
 
@@ -39,6 +44,10 @@ public class ActorDao {
         return actor;
     }
 
+    /**
+     * Função que lê os atores do banco, sem filtro.
+     * @return lista de atores lidos.
+     */
     public List<Actor> read() {
         Connection connection = this.connectionManager.createConnection();
 
@@ -65,6 +74,11 @@ public class ActorDao {
         return actorsList;
     }
 
+    /**
+     * Função que um ator do banco.
+     * @param ID identificador do ator a ser atualizado.
+     * @return ator lido.
+     */
     public Actor read(Long ID) {
         Connection connection = this.connectionManager.createConnection();
 
@@ -92,6 +106,13 @@ public class ActorDao {
         return actor;
     }
 
+    /**
+     * Função que atualiza um ator do banco, dado um ator como modelo.
+     *
+     * @param ID identificador do ator a ser atualizado.
+     * @param actor dados a serem atualizados
+     * @return response se foi atualizado (true) ou não (false)
+     */
     public boolean update(Long ID, Actor actor) {
         Connection connection = this.connectionManager.createConnection();
 
@@ -115,6 +136,11 @@ public class ActorDao {
         return response;
     }
 
+    /**
+     * Função que apaga um ator do banco.
+     * @param ID identificador do ator a ser apagado.
+     * @return response se foi apagado (true) ou não (false)
+     */
     public boolean delete(Long ID) {
         Connection connection = this.connectionManager.createConnection();
 
