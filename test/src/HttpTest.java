@@ -2,9 +2,8 @@ package src;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import src.Http;
 import src.adapter.rest.Request;
-import src.domain.response.Response;
+import src.adapter.rest.Response;
 
 public class HttpTest {
     private final Http HTTP = new Http();

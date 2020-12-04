@@ -1,6 +1,6 @@
 package src;
 
-import src.domain.response.Response;
+import src.adapter.rest.Response;
 
 import java.io.BufferedReader;
 import java.io.IOException;

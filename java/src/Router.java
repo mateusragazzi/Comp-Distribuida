@@ -1,8 +1,11 @@
 package src;
 
-import src.adapter.rest.*;
-import src.domain.response.HttpResponseDTO;
-import src.domain.response.Response;
+import src.adapter.rest.HttpResponseDTO;
+import src.adapter.rest.Request;
+import src.adapter.rest.Response;
+import src.adapter.rest.controller.ActorController;
+import src.adapter.rest.controller.MovieController;
+import src.adapter.rest.controller.SearchController;
 
 public class Router {
     private final ActorController actorController = new ActorController();

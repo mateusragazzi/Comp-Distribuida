@@ -1,10 +1,10 @@
 package src;
 
+import src.adapter.rest.HttpResponseDTO;
 import src.adapter.rest.Request;
+import src.adapter.rest.Response;
 import src.domain.exception.HttpException;
 import src.domain.exception.MethodNotAllowedException;
-import src.domain.response.HttpResponseDTO;
-import src.domain.response.Response;
 
 import java.util.HashMap;
 import java.util.Map;
