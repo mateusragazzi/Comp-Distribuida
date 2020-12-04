@@ -1,13 +1,23 @@
 package src.domain.entity;
 
+import javax.xml.bind.annotation.*;
 import java.util.Objects;
 
+@XmlRootElement(name = "actor")
 public class Actor {
     private Long ID;
-    private final String name;
-    private final String birthdate;
+
+    @XmlElement(name = "name")
+    private String name;
+
+    @XmlElement(name = "birthdate")
+    private String birthdate;
+
+    public Actor() {
+    }
 
     public Actor(Long ID, String name, String birthdate) {
+        this.ID = ID;
         this.name = name;
         this.birthdate = birthdate;
     }
@@ -29,6 +39,7 @@ public class Actor {
         return ID;
     }
 
+    @XmlAttribute
     public void setID(Long ID) {
         this.ID = ID;
     }

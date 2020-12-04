@@ -1,8 +1,6 @@
 package src;
 
-import src.adapter.rest.Controller;
-
-import javax.naming.ldap.Control;
+import src.adapter.rest.controller.Controller;
 
 public class MethodExecutor {
     Controller controller;

@@ -1,6 +1,6 @@
 package src;
 
-import src.domain.response.Response;
+import src.adapter.rest.Response;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import java.net.Socket;
 
 public class RequestProcessor implements Runnable {
     private final Socket clientSocket;
+
     public RequestProcessor(Socket clientSocket) {
         this.clientSocket = clientSocket;
     }

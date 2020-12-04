@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ActorDAOTest {
-    private ActorDao actorDao = new ActorDao();
+    private final ActorDao actorDao = new ActorDao();
     private long IDForTest, IDToDelete;
 
     @BeforeEach

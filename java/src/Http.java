@@ -3,8 +3,8 @@ package src;
 import src.adapter.rest.Request;
 import src.domain.exception.HttpException;
 import src.domain.exception.MethodNotAllowedException;
-import src.domain.response.HttpResponseDTO;
-import src.domain.response.Response;
+import src.adapter.rest.HttpResponseDTO;
+import src.adapter.rest.Response;
 
 import java.util.HashMap;
 import java.util.Map;
