@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `comp_dist`
 --
-
+CREATE DATABASE IF NOT EXISTS Movies;
+USE Movies;
 -- --------------------------------------------------------
 
 --
