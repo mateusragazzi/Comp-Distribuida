@@ -34,13 +34,10 @@ public class RequestProcessor implements Runnable {
 
                 clientSocket.setSoTimeout(10 * 1000);
 
-                while (!(inputLine = in.readLine()).isEmpty()) {
+                while (!(inputLine = in.readLine()).isEmpty())
                     request.append(inputLine).append("\r\n");
-                }
-
-                while (in.ready() && ((inputLine = in.readLine()) != null)) {
+                while (in.ready() && ((inputLine = in.readLine()) != null))
                     body.append(inputLine).append("\r\n");
-                }
 
                 Response response = http.processRequest(request.toString(), body.toString());
                 outputLine = response.toString();

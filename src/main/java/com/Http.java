@@ -5,8 +5,8 @@ import com.adapter.rest.Response;
 import com.domain.exception.HttpException;
 import com.domain.exception.MethodNotAllowedException;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Http {
     public static final String PATH = "path";
@@ -30,8 +30,15 @@ public class Http {
     private Map<String, String> parseRequest(String request, String body) throws MethodNotAllowedException {
         Map<String, String> requestData = new HashMap<>();
 
-        String[] requestTokens = request.split("\n");
+        String[] requestTokens = request.split("\\r\\n");
         String[] requestFirstLine = requestTokens[0].split(" ");
+        List<String> lastTokens = new ArrayList<>(Arrays.asList(requestTokens));
+        lastTokens.remove(0);
+        lastTokens.stream().forEach(httpLine -> {
+            String[] lineTokens = httpLine.split(":");
+            requestData.put(lineTokens[0], lineTokens[1].trim());
+        });
+
         final String method = requestFirstLine[0];
 
         if (needsBody(method)) {
