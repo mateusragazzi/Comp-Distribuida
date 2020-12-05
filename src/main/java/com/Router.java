@@ -6,6 +6,7 @@ import com.adapter.rest.Response;
 import com.adapter.rest.controller.ActorController;
 import com.adapter.rest.controller.MovieController;
 import com.adapter.rest.controller.SearchController;
+import com.domain.HttpStatus;
 
 public class Router {
     private final ActorController actorController = new ActorController(new ActorDao());
@@ -20,7 +21,9 @@ public class Router {
                 return actorController.getAll(request);
             if ("post".equalsIgnoreCase(request.getMethod()))
                 return actorController.create(request);
-            return new Response(405, request.getContentType(), "Method not allowed");
+            return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
+                    request.getContentType(),
+                    HttpStatus.METHOD_NOT_ALLOWED.getMessage());
         } else if ("actors/\\d".matches(path)) {
             return null;
         } else if ("/movies".equals(path)) {
@@ -32,7 +35,9 @@ public class Router {
         } else if ("/search".equals(path)) {
             return null;
         } else {
-            return new Response(404, request.getContentType(), "URL Not found");
+            return new Response(HttpStatus.NOT_FOUND.getStatusCode(),
+                    request.getContentType(),
+                    HttpStatus.NOT_FOUND.getMessage());
         }
     }
 }

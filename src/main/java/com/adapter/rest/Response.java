@@ -16,7 +16,6 @@ public class Response {
         this.body = body;
     }
 
-
     public int getStatusCode() {
         return statusCode;
     }
@@ -35,12 +34,12 @@ public class Response {
 
     @Override
     public String toString() {
-        return "";
+        return makeBaseHeaders() + "\r\n" + getBody() + "\r\n";
     }
 
-    protected String makeBaseHeaders(HttpStatus httpStatus, int contentLength) {
-        return String.format("HTTP/1.1 " + httpStatus.getStatusCode() + " " + httpStatus.getMessage() + " " + "\r\n" +
+    protected String makeBaseHeaders() {
+        return String.format("HTTP/1.1 " + "200" + " " + HttpStatus.OK.getMessage() + " " + "\r\n" +
                 "Server:  FACOM-CD-2020/1.0 \r\n" +
-                "Content-Length: %d\r\n", contentLength);
+                "Content-Length: %d\r\n", getBody().getBytes().length);
     }
 }
