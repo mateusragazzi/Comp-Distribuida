@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-# TODO: Inserir webservice Java
+  # TODO: Inserir webservice Java
   db:
     image: mysql
     container_name: webservice_mysql
@@ -10,6 +10,6 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./sql:/data
+      - ../sql:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: root
