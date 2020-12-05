@@ -21,7 +21,7 @@ public class MovieDao {
     public Movie create(Movie movie) {
         Connection connection = this.connectionManager.createConnection();
 
-        String sql = String.format("INSERT INTO movies (title, synopsis) VALUES(?, ?);");
+        String sql = "INSERT INTO movies (title, synopsis) VALUES(?, ?);";
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStmt.setString(1, movie.getTitle());

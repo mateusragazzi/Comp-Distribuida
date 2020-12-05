@@ -43,8 +43,6 @@ public class RequestProcessor implements Runnable {
                 }
 
                 Response response = http.processRequest(request.toString(), body.toString());
-                System.out.println("got here");
-                System.out.println(response.toString());
                 outputLine = response.toString();
                 out.write(outputLine.getBytes());
             } catch (IOException e) {

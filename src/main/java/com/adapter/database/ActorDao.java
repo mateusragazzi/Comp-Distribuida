@@ -20,7 +20,7 @@ public class ActorDao {
      * @return retorna o ator, com o ID gerado pelo banco.
      */
     public Actor create(Actor actor) {
-        String sql = String.format("INSERT INTO actors (name, birthdate) VALUES(?, ?);");
+        String sql = "INSERT INTO actors (name, birthdate) VALUES(?, ?);";
         try {
             PreparedStatement preparedStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStmt.setString(1, actor.getName());
