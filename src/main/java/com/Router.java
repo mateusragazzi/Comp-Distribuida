@@ -15,21 +15,21 @@ public class Router {
     public Response route(Request request) {
         final String path = request.getPath();
 
-        if ("actors".equals(path)) {
-            if ("get".equals(request.getMethod()))
+        if ("/actors".equals(path)) {
+            if ("get".equalsIgnoreCase(request.getMethod()))
                 return actorController.getAll(request);
-            if ("post".equals(request.getMethod()))
+            if ("post".equalsIgnoreCase(request.getMethod()))
                 return actorController.create(request);
             return new Response(405, request.getContentType(), "Method not allowed");
         } else if ("actors/\\d".matches(path)) {
             return null;
-        } else if ("movies".equals(path)) {
+        } else if ("/movies".equals(path)) {
             return null;
 
-        } else if ("movies/\\d".matches(path)) {
+        } else if ("/movies/\\d".matches(path)) {
             return null;
 
-        } else if ("search".equals(path)) {
+        } else if ("/search".equals(path)) {
             return null;
         } else {
             return new Response(404, request.getContentType(), "URL Not found");
