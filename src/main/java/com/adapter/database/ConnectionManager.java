@@ -12,7 +12,7 @@ public class ConnectionManager implements ConnectionFactory {
         if (this.connection == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/comp_dist", "root", "root");
+                this.connection = DriverManager.getConnection("jdbc:mysql://db:3306/Movies", "root", "root");
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
