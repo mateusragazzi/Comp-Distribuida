@@ -1,8 +1,12 @@
 package com.adapter.database;
 
+import com.domain.entity.Actor;
+import com.domain.entity.Movie;
+
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GenericDao {
     Connection connection;
@@ -19,28 +23,12 @@ public class GenericDao {
      */
     public List<Object> read(String term) {
         List<Object> listOfObjects = null;
+        ActorDao actorDao = new ActorDao();
+        MovieDao movieDao = new MovieDao();
+        List<Actor> actorList = actorDao.read(term);
+        List<Movie> movieList = movieDao.read(term);
 
-        String sql = "SELECT * FROM actors, movies " +
-                     "WHERE name LIKE '%{term}%' OR birthdate LIKE '%{term}%' " +
-                     "OR title LIKE '%{term}%' OR synopsis LIKE '%{term}%';";
-
-        sql.replaceAll("\\{term}", term);
-
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-
-            ResultSet resultSet = stmt.executeQuery();
-            ResultSetMetaData rsmd = resultSet.getMetaData();
-            String table = "";
-            for (int i = 1; i < rsmd.getColumnCount(); i++) {
-                table = rsmd.getTableName(i);
-
-            }
-
-            stmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        listOfObjects = Stream.concat(actorList.stream(), movieList.stream()).collect(Collectors.toList());
 
         return listOfObjects;
     }

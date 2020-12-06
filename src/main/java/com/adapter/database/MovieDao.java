@@ -1,5 +1,6 @@
 package com.adapter.database;
 
+import com.domain.entity.Actor;
 import com.domain.entity.Movie;
 
 import java.sql.*;
@@ -104,6 +105,41 @@ public class MovieDao {
         }
 
         return movie;
+    }
+
+    /**
+     * Tenta localizar um filme dado um termo qualquer.
+     *
+     * @param term indica o termo que o usuário buscou.
+     * @return retorna 1 ou mais filmes localizados.
+     */
+    public List<Movie> read(String term) {
+        Connection connection = this.connectionManager.createConnection();
+
+        List<Movie> moviesList = new ArrayList<>();
+
+        String sql = "SELECT * FROM movies WHERE title LIKE ? OR synopsis LIKE ?;";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, "%" + term + "%");
+            stmt.setString(2, "%" + term + "%");
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                long ID = resultSet.getLong("id");
+                String title = resultSet.getString("title");
+                String synopsis = resultSet.getString("synopsis");
+                moviesList.add(new Movie(ID, title, synopsis));
+            }
+
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return moviesList;
     }
 
     /**
