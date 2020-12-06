@@ -4,6 +4,7 @@ import com.domain.entity.Actor;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ActorDao {
@@ -145,13 +146,22 @@ public class ActorDao {
      */
     public boolean update(Long ID, Actor actor) {
         boolean response = false;
+        List<String> validFields = new ArrayList<>();
 
-        String sql = "UPDATE actors SET name = ?, birthdate = ? WHERE id = ?;";
+        String sql = "UPDATE actors SET ";
+
+        if (actor.getName() != null) {
+            validFields.add(" name = '" + actor.getName() + "'");
+        }
+
+        if (actor.getBirthdate() != null) {
+            validFields.add(" birthdate = '" + actor.getBirthdate() + "'");
+        }
+        sql = sql.concat(String.join(",", validFields)).concat(" WHERE id = ?;");
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, actor.getName());
-            stmt.setString(2, actor.getBirthdate());
-            stmt.setLong(3, ID);
+            stmt.setLong(1, ID);
 
             stmt.executeUpdate();
             stmt.close();

@@ -77,7 +77,7 @@ public class MovieDao {
 
     /**
      * Função que um filme do banco.
-     * @param ID identificador do filme a ser atualizado.
+     * @param ID identificador do filme a ser buscado.
      * @return filme lido.
      */
     public Movie read(Long ID) {
@@ -106,6 +106,44 @@ public class MovieDao {
 
         return movie;
     }
+
+    /**
+     * Função que busca os atores de um filme.
+     * @param ID identificador do filme a ser buscado.
+     * @return filme lido.
+     */
+    public List<Actor> readActorsFromMovie(Long ID) {
+        List<Actor> actorsList = new ArrayList<>();
+        Connection connection = this.connectionManager.createConnection();
+
+        Movie movie = null;
+
+        String sql = "SELECT a.name AS name, a.birthdate AS birthdate " +
+                    "FROM movies m " +
+                    "INNER JOIN movie_actors ma ON (m.id = ma.movieid) " +
+                    "INNER JOIN actors a ON (a.id = ma.actorid) " +
+                    "WHERE m.id = ?;";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, ID);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String birthDate = resultSet.getString("birthdate");
+                actorsList.add(new Actor(name, birthDate));
+            }
+
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return actorsList;
+    }
+
 
     /**
      * Tenta localizar um filme dado um termo qualquer.
@@ -151,15 +189,25 @@ public class MovieDao {
      */
     public boolean update(Long ID, Movie movie) {
         Connection connection = this.connectionManager.createConnection();
+        List<String> validFields = new ArrayList<>();
 
         boolean response = false;
 
-        String sql = "UPDATE movies SET title = ?, synopsis = ? WHERE id = ?;";
+        String sql = "UPDATE movies SET ";
+
+        if (movie.getTitle() != null) {
+            validFields.add(" title = '" + movie.getTitle() + "'");
+        }
+
+        if (movie.getSynopsis() != null) {
+            validFields.add(" synopsis = \"" + movie.getSynopsis() + "\"");
+        }
+
+        sql = sql.concat(String.join(",", validFields)).concat(" WHERE id = ?;");
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, movie.getTitle());
-            stmt.setString(2, movie.getSynopsis());
-            stmt.setLong(3, ID);
+            stmt.setLong(1, ID);
 
             stmt.executeUpdate();
             stmt.close();
