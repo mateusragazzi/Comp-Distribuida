@@ -33,6 +33,18 @@ public class ActorController extends Controller {
         String actorData = request.getBody();
         Actor actor = (Actor) new JsonSerializer().desserialize(actorData, Actor.class);
         dao.create(actor);
-        return new Response(200, contentType, actor);
+        return new Response(200, contentType, String.format("actor %s was created", actor.getName()));
+    }
+
+    public Response update(Request request) {
+        String actorData = request.getBody();
+        Actor actor = (Actor) new JsonSerializer().desserialize(actorData, Actor.class);
+        dao.update(Long.parseLong(request.getParams()), actor);
+        return new Response(200, request.getContentType(), String.format("actor %s was updated", actor.getName()));
+    }
+
+    public Response destroy(Request request) {
+        dao.delete(Long.parseLong(request.getParams()));
+        return new Response(200, request.getContentType(), "actor removed.");
     }
 }

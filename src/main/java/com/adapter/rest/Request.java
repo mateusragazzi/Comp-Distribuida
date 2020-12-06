@@ -51,7 +51,7 @@ public class Request {
         if (!body.isEmpty() && params.isEmpty()) {
             return String.format("%s %s HTTP/1.1\r\nHost: %s\r\nContent-Type: %s\r\n\n%s", method, path, host, contentType, body);
         } else if (!body.isEmpty()) {
-            return String.format("%s %s /%s HTTP/1.1\r\n%s\r\nHost: %s\r\nContent-Type: %s\r\n\n%s", method, path, params, host, contentType, body);
+            return String.format("%s %s/%s HTTP/1.1\r\nHost: %s\r\nContent-Type: %s\r\n\n%s", method, path, params, host, contentType, body);
         } else {
             return String.format("%s %s /HTTP/1.1\r\nHost: %s\r\nContent-Type: %s", method, path, host, contentType);
         }

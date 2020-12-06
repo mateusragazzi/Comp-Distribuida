@@ -23,16 +23,22 @@ public class Router {
 
     public Response route(Request request) {
         final String path = request.getPath();
+        final String method = request.getMethod();
+        final String params = request.getParams();
 
         if ("/actors".equals(path)) {
-            if ("get".equalsIgnoreCase(request.getMethod())) {
-                if (hasParams(request.getParams()))
+            if ("get".equalsIgnoreCase(method)) {
+                if (hasParams(params))
                     return actorController.getById(request);
                 return actorController.getAll(request);
             }
-
-            if ("post".equalsIgnoreCase(request.getMethod()))
+            if ("post".equalsIgnoreCase(method))
                 return actorController.create(request);
+            if ("put".equalsIgnoreCase(method))
+                return actorController.update(request);
+            if ("delete".equalsIgnoreCase(method))
+                return actorController.destroy(request);
+
             return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
                     request.getContentType(),
                     HttpStatus.METHOD_NOT_ALLOWED.getMessage());
