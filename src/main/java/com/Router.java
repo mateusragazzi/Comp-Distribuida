@@ -17,8 +17,12 @@ public class Router {
         final String path = request.getPath();
 
         if ("/actors".equals(path)) {
-            if ("get".equalsIgnoreCase(request.getMethod()))
+            if ("get".equalsIgnoreCase(request.getMethod())){
+                if(!request.getParams().isEmpty())
+                    return actorController.getById(request);
                 return actorController.getAll(request);
+            }
+
             if ("post".equalsIgnoreCase(request.getMethod()))
                 return actorController.create(request);
             return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
