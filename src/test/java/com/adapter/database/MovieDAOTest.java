@@ -1,9 +1,13 @@
 package com.adapter.database;
 
+import com.domain.entity.Actor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.domain.entity.Movie;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -59,6 +63,31 @@ public class MovieDAOTest {
         Movie readMovie = movieDao.read(this.IDForTest);
 
         assertEquals(movie, readMovie);
+    }
+
+    @Test
+    void mustReadActorsFromMovie() {
+        List<Actor> expectedActorsList = new ArrayList<>();
+        expectedActorsList.add(new Actor("Al Pacino", "1940-04-25"));
+        expectedActorsList.add(new Actor("Diane Keaton", "1946-01-05"));
+        expectedActorsList.add(new Actor("Marlon Brando", "1924-04-03"));
+        expectedActorsList.add(new Actor("James Caan", "1940-03-26"));
+        expectedActorsList.add(new Actor("Richard S. Castellano", "1933-09-04"));
+        expectedActorsList.add(new Actor("John Cazale", "1935-08-12"));
+        expectedActorsList.add(new Actor("Robert Duvall", "1931-01-05"));
+
+        List<Actor> actorsList = movieDao.readActorsFromMovie((long) 2);
+
+        boolean result = true;
+        int index = 0;
+        while (result && index < actorsList.size()) {
+            if (!expectedActorsList.get(index).equals(actorsList.get(index))) {
+                result = false;
+            }
+            index++;
+        }
+
+        assertTrue(result);
     }
 
     @Test
