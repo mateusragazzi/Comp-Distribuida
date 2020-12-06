@@ -28,8 +28,8 @@ public class Router {
             return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
                     request.getContentType(),
                     HttpStatus.METHOD_NOT_ALLOWED.getMessage());
-        } else if ("actors/\\d".matches(path)) {
-            return null;
+        } else if ("/actors/\\d".matches(path)) {
+            return actorController.getById(request);
         } else if ("/movies".equals(path)) {
             return null;
 
