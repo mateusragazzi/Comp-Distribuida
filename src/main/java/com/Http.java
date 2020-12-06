@@ -40,8 +40,9 @@ public class Http {
         });
 
         final String method = requestFirstLine[0];
-        final String params = Optional.of(requestFirstLine[1].split("/\\w+/")[1]).orElse("");
-        final String path = requestFirstLine[1].split("/\\d")[0];
+        final String[] s = requestFirstLine[1].split("/\\w+/");
+        final String params = s.length > 1 ? s[1] : "";
+        final String path = requestFirstLine[1].split("/")[1];
 
         requestData.put(PATH, path);
         requestData.put("params", params);

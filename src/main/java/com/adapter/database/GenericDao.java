@@ -22,15 +22,10 @@ public class GenericDao {
      * @return lista de objetos encontrados na busca.
      */
     public List<Object> read(String term) {
-        List<Object> listOfObjects = null;
         ActorDao actorDao = new ActorDao();
         MovieDao movieDao = new MovieDao();
         List<Actor> actorList = actorDao.read(term);
         List<Movie> movieList = movieDao.read(term);
-
-        listOfObjects = Stream.concat(actorList.stream(), movieList.stream()).collect(Collectors.toList());
-
-        return listOfObjects;
+        return Stream.concat(actorList.stream(), movieList.stream()).collect(Collectors.toList());
     }
-
 }

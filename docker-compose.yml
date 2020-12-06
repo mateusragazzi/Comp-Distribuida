@@ -13,12 +13,14 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
   java:
+    depends_on:
+      - db
     image: migueldoctor/cosmos-gitlabci-jdk8-maven-gradle
     container_name: webservice_server
-    command: mvn clean install exec:java -Dexec.args="8080"
+    command: mvn clean install exec:java -Dexec.args="9001"
     working_dir: /usr/comp_dist/
     restart: always
     ports:
-      - 9001:8080
+      - 9001:9001
     volumes:
       - .:/usr/comp_dist/

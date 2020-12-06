@@ -1,6 +1,8 @@
 package com;
 
 import com.adapter.database.ActorDao;
+import com.adapter.database.GenericDao;
+import com.adapter.database.MovieDao;
 import com.adapter.rest.Request;
 import com.adapter.rest.Response;
 import com.adapter.rest.controller.ActorController;
@@ -13,20 +15,15 @@ import java.util.regex.Pattern;
 
 public class Router {
     private final ActorController actorController = new ActorController(new ActorDao());
-    private final MovieController movieController = new MovieController();
-    private final SearchController controller = new SearchController();
-    private Pattern pattern;
-
-    public Router() {
-        this.pattern = Pattern.compile("/\\w/\\d");
-    }
+    private final MovieController movieController = new MovieController(new MovieDao());
+    private final SearchController searchController = new SearchController(new GenericDao());
 
     public Response route(Request request) {
         final String path = request.getPath();
         final String method = request.getMethod();
         final String params = request.getParams();
 
-        if ("/actors".equals(path)) {
+        if ("actors".equals(path)) {
             if ("get".equalsIgnoreCase(method)) {
                 if (hasParams(params))
                     return actorController.getById(request);
@@ -42,16 +39,34 @@ public class Router {
             return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
                     request.getContentType(),
                     HttpStatus.METHOD_NOT_ALLOWED.getMessage());
-        } else if (Pattern.matches("/actors/\\d", path)) {
-            return actorController.getById(request);
-        } else if ("/movies".equals(path)) {
-            return null;
+        } else if ("movies".equals(path)) {
+            if ("get".equalsIgnoreCase(method)) {
+                if (hasParams(params))
+                    return movieController.getById(request);
+                return movieController.getAll(request);
+            }
+            if ("post".equalsIgnoreCase(method))
+                return movieController.create(request);
+            if ("put".equalsIgnoreCase(method))
+                return movieController.update(request);
+            if ("delete".equalsIgnoreCase(method))
+                return movieController.destroy(request);
 
-        } else if ("/movies/\\d".matches(path)) {
-            return null;
+            return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
+                    request.getContentType(),
+                    HttpStatus.METHOD_NOT_ALLOWED.getMessage());
 
-        } else if ("/search".equals(path)) {
-            return null;
+        } else if ("search".equals(path)) {
+            if ("get".equalsIgnoreCase(method)) {
+                if (hasParams(params))
+                    return searchController.search(request);
+                return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
+                        request.getContentType(),
+                        HttpStatus.METHOD_NOT_ALLOWED.getMessage());
+            }
+            return new Response(HttpStatus.METHOD_NOT_ALLOWED.getStatusCode(),
+                    request.getContentType(),
+                    HttpStatus.METHOD_NOT_ALLOWED.getMessage());
         } else {
             return new Response(HttpStatus.NOT_FOUND.getStatusCode(),
                     request.getContentType(),
