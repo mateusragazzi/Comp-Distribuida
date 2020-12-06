@@ -151,15 +151,25 @@ public class MovieDao {
      */
     public boolean update(Long ID, Movie movie) {
         Connection connection = this.connectionManager.createConnection();
+        List<String> validFields = new ArrayList<>();
 
         boolean response = false;
 
-        String sql = "UPDATE movies SET title = ?, synopsis = ? WHERE id = ?;";
+        String sql = "UPDATE movies SET ";
+
+        if (movie.getTitle() != null) {
+            validFields.add(" title = '" + movie.getTitle() + "'");
+        }
+
+        if (movie.getSynopsis() != null) {
+            validFields.add(" synopsis = \"" + movie.getSynopsis() + "\"");
+        }
+
+        sql = sql.concat(String.join(",", validFields)).concat(" WHERE id = ?;");
+
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, movie.getTitle());
-            stmt.setString(2, movie.getSynopsis());
-            stmt.setLong(3, ID);
+            stmt.setLong(1, ID);
 
             stmt.executeUpdate();
             stmt.close();

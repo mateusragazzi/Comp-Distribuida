@@ -3,7 +3,6 @@ package com.adapter.database;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.adapter.database.ActorDao;
 import com.domain.entity.Actor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -35,12 +34,22 @@ public class ActorDAOTest {
     }
 
     @Test
-    void mustUpdateActor() {
+    void mustUpdateAllParamsActor() {
         Actor actor = new Actor("Mateus Ragazzi", "1999-01-05");
         actorDao.update(this.IDForTest, actor);
         Actor updatedActor = actorDao.read(this.IDForTest);
 
         assertEquals(actor, updatedActor);
+    }
+
+    @Test
+    void mustUpdateOneParamActor() {
+        Actor actor = new Actor("Mateus", null);
+        Actor fullActor = new Actor("Mateus", "1999-01-05");
+        actorDao.update(this.IDForTest, actor);
+        Actor updatedActor = actorDao.read(this.IDForTest);
+
+        assertEquals(fullActor, updatedActor);
     }
 
     @Test
