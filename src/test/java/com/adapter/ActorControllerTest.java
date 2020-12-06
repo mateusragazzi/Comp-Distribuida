@@ -1,14 +1,16 @@
 package com.adapter;
 
+import com.adapter.database.ActorDao;
+import com.adapter.rest.Response;
+import com.adapter.rest.controller.ActorController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import com.RequestBuilder;
-import com.adapter.rest.ActorController;
 import com.adapter.rest.Request;
-import com.domain.response.Response;
+import org.mockito.Mockito;
 
 public class ActorControllerTest {
-    ActorController controller = new ActorController();
+    ActorController controller = new ActorController(Mockito.mock(ActorDao.class));
 
     @Test
     void shouldGetAllActors() {

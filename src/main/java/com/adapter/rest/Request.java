@@ -16,10 +16,9 @@ public class Request {
         this.method = request.get("method");
         this.path = request.get("path");
         this.params = Objects.nonNull(request.get("params")) ? request.get("params") : "";
-        // TODO: temporario
         this.host = "http://localhost:8080";
         this.body = request.get("body");
-        this.contentType = request.get("contentType");
+        this.contentType = request.get("Content-Type");
     }
 
     public Request(String method, String path, String params, String host, String body, String contentType) {

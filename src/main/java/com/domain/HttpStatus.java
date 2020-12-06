@@ -2,7 +2,7 @@ package com.domain;
 
 public enum HttpStatus {
     OK(200, "Document follows"),
-    NOT_FOUND(404, "Documento not found"),
+    NOT_FOUND(404, "Document not found"),
     BAD_REQUEST(400, "Bad Request"),
     METHOD_NOT_ALLOWED(405, "Method not allowed");
 

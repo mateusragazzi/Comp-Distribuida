@@ -21,6 +21,13 @@ public class ActorController extends Controller {
         return new Response(200, contentType, actors);
     }
 
+    public Response getById(Request request) {
+        String contentType = request.getContentType();
+        long id = Long.parseLong(request.getParams());
+        Actor actor = dao.read(id);
+        return new Response(200, contentType, actor);
+    }
+
     public Response create(Request request) {
         String contentType = request.getContentType();
         String actorData = request.getBody();

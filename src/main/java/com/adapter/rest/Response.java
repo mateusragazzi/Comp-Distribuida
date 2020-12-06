@@ -5,6 +5,8 @@ import com.adapter.rest.serializer.JsonSerializer;
 import com.adapter.rest.serializer.XmlSerializer;
 import com.domain.HttpStatus;
 
+import java.util.Objects;
+
 public class Response {
     private final int statusCode;
     private final String contentType;
@@ -16,7 +18,6 @@ public class Response {
         this.body = body;
     }
 
-
     public int getStatusCode() {
         return statusCode;
     }
@@ -26,7 +27,7 @@ public class Response {
     }
 
     public String getBody() {
-        if (ContentType.JSON.getType().equals(this.contentType))
+        if (ContentType.JSON.getType().equals(this.contentType) || Objects.isNull(this.contentType))
             return new JsonSerializer().serialize(body);
         else if (ContentType.XML.getType().equals(this.contentType))
             return new XmlSerializer().serialize(body);
@@ -35,12 +36,13 @@ public class Response {
 
     @Override
     public String toString() {
-        return "";
+        return makeBaseHeaders() + "\r\n" + getBody() + "\r\n";
     }
 
-    protected String makeBaseHeaders(HttpStatus httpStatus, int contentLength) {
-        return String.format("HTTP/1.1 " + httpStatus.getStatusCode() + " " + httpStatus.getMessage() + " " + "\r\n" +
+    protected String makeBaseHeaders() {
+        return String.format("HTTP/1.1 " + "200" + " " + HttpStatus.OK.getMessage() + " " + "\r\n" +
                 "Server:  FACOM-CD-2020/1.0 \r\n" +
-                "Content-Length: %d\r\n", contentLength);
+                "Content-Type: %s\r\n" +
+                "Content-Length: %d\r\n", getContentType(), getBody().getBytes().length);
     }
 }

@@ -34,17 +34,15 @@ public class RequestProcessor implements Runnable {
 
                 clientSocket.setSoTimeout(10 * 1000);
 
-                while (!(inputLine = in.readLine()).isEmpty()) {
+                while (in.ready() && (inputLine = in.readLine()) != null) {
+                    if (inputLine.isEmpty())
+                        break;
                     request.append(inputLine).append("\r\n");
                 }
-
-                while (in.ready() && ((inputLine = in.readLine()) != null)) {
+                while (in.ready() && ((inputLine = in.readLine()) != null))
                     body.append(inputLine).append("\r\n");
-                }
 
                 Response response = http.processRequest(request.toString(), body.toString());
-                System.out.println("got here");
-                System.out.println(response.toString());
                 outputLine = response.toString();
                 out.write(outputLine.getBytes());
             } catch (IOException e) {
