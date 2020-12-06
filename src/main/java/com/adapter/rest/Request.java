@@ -49,11 +49,11 @@ public class Request {
     @Override
     public String toString() {
         if (!body.isEmpty() && params.isEmpty()) {
-            return method + " " + path + " " + "HTTP/1.1\r\n" + host + "\r\n\n" + body;
+            return String.format("%s %s HTTP/1.1\r\nHost: %s\r\nContent-Type: %s\r\n\n%s", method, path, host, contentType, body);
         } else if (!body.isEmpty()) {
-            return method + " " + path + " " + "/" + params + " " + "HTTP/1.1\r\n" + host + "\r\n\n" + body;
+            return String.format("%s %s /%s HTTP/1.1\r\n%s\r\nHost: %s\r\nContent-Type: %s\r\n\n%s", method, path, params, host, contentType, body);
         } else {
-            return method + " " + path + " " + "/" + "HTTP/1.1\r\n";
+            return String.format("%s %s /HTTP/1.1\r\nHost: %s\r\nContent-Type: %s", method, path, host, contentType);
         }
     }
 

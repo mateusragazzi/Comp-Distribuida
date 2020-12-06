@@ -14,7 +14,7 @@ public class Response {
 
     public Response(int statusCode, String contentType, Object body) {
         this.statusCode = statusCode;
-        this.contentType = contentType;
+        this.contentType = Objects.isNull(contentType) ? "application/json" : contentType;
         this.body = body;
     }
 
