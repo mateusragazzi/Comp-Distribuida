@@ -104,6 +104,39 @@ public class ActorDao {
     }
 
     /**
+     * Tenta localizar um atores dado um termo qualquer.
+     *
+     * @param term indica o termo que o usuário buscou.
+     * @return retorna 1 ou mais atores localizados.
+     */
+    public List<Actor> read(String term) {
+        List<Actor> actorsList = new ArrayList<>();
+
+        String sql = "SELECT * FROM actors WHERE name LIKE ? OR birthdate LIKE ?;";
+
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, "%" + term + "%");
+            stmt.setString(2, "%" + term + "%");
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            while (resultSet.next()) {
+                long ID = resultSet.getLong("id");
+                String name = resultSet.getString("name");
+                String birthDate = resultSet.getString("birthdate");
+                actorsList.add(new Actor(ID, name, birthDate));
+            }
+
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return actorsList;
+    }
+
+    /**
      * Função que atualiza um ator do banco, dado um ator como modelo.
      *
      * @param ID    identificador do ator a ser atualizado.
