@@ -15,7 +15,7 @@ public class Request {
     public Request(Map<String, String> request) {
         this.method = request.get("method");
         this.path = request.get("path");
-        this.params = Objects.nonNull(request.get("params")) ? request.get("params") : "";
+        this.params = request.get("params");
         this.host = "http://localhost:8080";
         this.body = request.get("body");
         this.contentType = request.get("Content-Type");

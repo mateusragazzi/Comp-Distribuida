@@ -40,16 +40,19 @@ public class Http {
         });
 
         final String method = requestFirstLine[0];
+        final String params = Optional.of(requestFirstLine[1].split("/\\w+/")[1]).orElse("");
+        final String path = requestFirstLine[1].split("/\\d")[0];
 
-        if (needsBody(method)) {
-            requestData.put(METHOD, method);
-            requestData.put(PATH, requestFirstLine[1]);
-            requestData.put(BODY, body);
-            return requestData;
-        }
-        if (method.equalsIgnoreCase("GET") || method.equalsIgnoreCase("DELETE")) {
-            requestData.put(METHOD, method);
-            requestData.put(PATH, requestFirstLine[1]);
+        requestData.put(PATH, path);
+        requestData.put("params", params);
+        requestData.put(METHOD, method);
+        requestData.put(BODY, body);
+
+        if (method.equalsIgnoreCase("GET") ||
+                method.equalsIgnoreCase("DELETE") ||
+                method.equalsIgnoreCase("POST") ||
+                method.equalsIgnoreCase("PUT") ||
+                method.equalsIgnoreCase("PATCH")) {
             return requestData;
         } else {
             throw new MethodNotAllowedException();
