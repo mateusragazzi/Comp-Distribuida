@@ -28,6 +28,9 @@ public class Http {
         }
     }
 
+    /**
+     * Recebe uma request em String e cria um mapa de suas informações
+     **/
     private Map<String, Object> parseRequest(String request, String body) throws MethodNotAllowedException {
         Map<String, Object> requestData = new HashMap<>();
 
@@ -58,9 +61,5 @@ public class Http {
         } else {
             throw new MethodNotAllowedException();
         }
-    }
-
-    private boolean needsBody(String method) {
-        return method.equalsIgnoreCase("POST") || method.equalsIgnoreCase("PUT") || method.equalsIgnoreCase("PATCH");
     }
 }

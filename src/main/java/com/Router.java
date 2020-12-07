@@ -19,6 +19,9 @@ public class Router {
     private final MovieController movieController = new MovieController(new MovieDao());
     private final SearchController searchController = new SearchController(new GenericDao());
 
+    /**
+     * Recebe uma Request e mapeia os endpoints aos controllers
+     **/
     public Response route(Request request) {
         final String path = request.getPath();
         final String method = request.getMethod();
