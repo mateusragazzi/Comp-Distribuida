@@ -42,7 +42,6 @@ public class Http {
 
         final String method = requestFirstLine[0];
         final List<String> urlTokens = new ArrayList<>(Arrays.asList(requestFirstLine[1].split("/")));
-//        final String[] params = s.length > 1 ? s[1] : "";
         final String path = urlTokens.get(1);
         List<String> params = urlTokens.size() < 2 ? Collections.EMPTY_LIST : new ArrayList<>(urlTokens.subList(2, urlTokens.size()));
         requestData.put(PATH, path);
