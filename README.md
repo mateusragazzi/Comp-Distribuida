@@ -1,11 +1,11 @@
-# Trabalho - Computação Distribuida
+# WebService - Java - Computacao Distribuida - UFMS
 
 ## Objetivo
-Implementar um servidor HTTP
+Implementar um WebService sem frameworks
 
 ## Para executar
 
-Baixe o repositório com o comando:
+*Necessário ter Docker e Docker Compose
 ```
 git clone https://github.com/mateusragazzi/Comp-Distribuida.git
 ```
@@ -16,14 +16,26 @@ cd Comp-Distribuida
 ```
 ### Local
 ```
-chmod +x build_[SEU_AMBIENTE].sh
+docker-compose up -d
 ```
+### Com logs
 ```
-./build_[SEU_AMBIENTE].sh
+docker-compose up 
 ```
-
-### URL do CGI-bin
-```
-http://0.0.0.0:8080/cgi-bin/datetime.sh?username=SeuNome
-
+## Endpoints
+#### actors
+* GET /actors
+* GET /actors/{id}
+* POST /actors
+* PUT /actors/{id}
+* DELETE /actors/{id}
+#### movies
+* GET /movies
+* GET /movies/{id}
+* GET /movies/{id}/actors (todos atores de um determinado filme)
+* POST /movies
+* PUT /movies/{id}
+* DELETE /movies/{id}
+#### busca filmes e atores
+* GET /search/{search_term}
 ```
