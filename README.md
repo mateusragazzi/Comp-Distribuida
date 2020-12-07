@@ -5,7 +5,7 @@ Implementar um WebService sem frameworks
 
 ## Para executar
 
-*Necessário ter Docker e Docker Compose
+*Necessário ter Docker e Docker Compose*
 ```
 git clone https://github.com/mateusragazzi/Comp-Distribuida.git
 ```
