@@ -10,6 +10,7 @@ import com.adapter.rest.controller.MovieController;
 import com.adapter.rest.controller.SearchController;
 import com.domain.HttpStatus;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,7 +22,7 @@ public class Router {
     public Response route(Request request) {
         final String path = request.getPath();
         final String method = request.getMethod();
-        final String params = request.getParams();
+        final List<String> params = request.getParams();
 
         if ("actors".equals(path)) {
             if ("get".equalsIgnoreCase(method)) {
@@ -41,8 +42,11 @@ public class Router {
                     HttpStatus.METHOD_NOT_ALLOWED.getMessage());
         } else if ("movies".equals(path)) {
             if ("get".equalsIgnoreCase(method)) {
-                if (hasParams(params))
+                if (hasParams(params)) {
+                    if (params.size() > 1)
+                        return movieController.getActors(request);
                     return movieController.getById(request);
+                }
                 return movieController.getAll(request);
             }
             if ("post".equalsIgnoreCase(method))
@@ -74,7 +78,7 @@ public class Router {
         }
     }
 
-    private boolean hasParams(String params) {
+    private boolean hasParams(List<String> params) {
         return !params.isEmpty();
     }
 }

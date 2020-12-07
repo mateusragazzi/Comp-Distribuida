@@ -14,7 +14,7 @@ public class SearchController extends Controller {
     }
 
     public Response search(Request request) {
-        List<Object> searchResult = genericDao.read(request.getParams());
+        List<Object> searchResult = genericDao.read(request.getParams().get(0));
         return new Response(200, request.getContentType(), searchResult);
     }
 }

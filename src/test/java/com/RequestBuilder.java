@@ -2,6 +2,8 @@ package com;
 
 import com.adapter.rest.Request;
 
+import java.util.Arrays;
+
 public class RequestBuilder {
     private String method;
     private String path;
@@ -40,6 +42,6 @@ public class RequestBuilder {
     }
 
     public Request build() {
-        return new Request(method, path, params, host, body, contentType);
+        return new Request(method, path, Arrays.asList(params), host, body, contentType);
     }
 }

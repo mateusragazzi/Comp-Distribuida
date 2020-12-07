@@ -76,7 +76,7 @@ public class MovieDao {
     }
 
     /**
-     * Função que um filme do banco.
+     * Função que busca um filme do banco.
      * @param ID identificador do filme a ser buscado.
      * @return filme lido.
      */
@@ -115,8 +115,6 @@ public class MovieDao {
     public List<Actor> readActorsFromMovie(Long ID) {
         List<Actor> actorsList = new ArrayList<>();
         Connection connection = this.connectionManager.createConnection();
-
-        Movie movie = null;
 
         String sql = "SELECT a.name AS name, a.birthdate AS birthdate " +
                     "FROM movies m " +

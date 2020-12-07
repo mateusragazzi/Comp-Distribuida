@@ -23,7 +23,7 @@ public class ActorController extends Controller {
 
     public Response getById(Request request) {
         String contentType = request.getContentType();
-        long id = Long.parseLong(request.getParams());
+        long id = Long.parseLong(request.getParams().get(0));
         Actor actor = dao.read(id);
         return new Response(200, contentType, actor);
     }
@@ -39,12 +39,12 @@ public class ActorController extends Controller {
     public Response update(Request request) {
         String actorData = request.getBody();
         Actor actor = (Actor) new JsonSerializer().desserialize(actorData, Actor.class);
-        dao.update(Long.parseLong(request.getParams()), actor);
+        dao.update(Long.parseLong(request.getParams().get(0)), actor);
         return new Response(200, request.getContentType(), String.format("actor %s was updated", actor.getName()));
     }
 
     public Response destroy(Request request) {
-        dao.delete(Long.parseLong(request.getParams()));
+        dao.delete(Long.parseLong(request.getParams().get(0)));
         return new Response(200, request.getContentType(), "actor removed.");
     }
 }
